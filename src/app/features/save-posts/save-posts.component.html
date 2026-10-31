@@ -1,0 +1,509 @@
+<section class="min-h-screen space-y-6 bg-[#101210] p-3 text-white sm:p-5 lg:p-7">
+  <!-- ==================== HEADER ==================== -->
+  <header
+    class="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#191C19] p-5 sm:p-7"
+  >
+    <div
+      class="pointer-events-none absolute -right-10 -top-16 h-56 w-56 rounded-full bg-[#D7F36B]/[0.08] blur-3xl"
+    ></div>
+
+    <div class="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-4">
+        <div
+          class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[#D7F36B]/20 bg-[#D7F36B]/10 text-[#D7F36B] sm:h-16 sm:w-16"
+        >
+          <i class="fa-solid fa-bookmark text-2xl sm:text-3xl"></i>
+        </div>
+
+        <div>
+          <p class="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D7F36B]">
+            YOUR COLLECTION
+          </p>
+
+          <h1 class="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
+            Saved <span class="text-[#D7F36B]">Posts.</span>
+          </h1>
+
+          <p class="mt-2 max-w-md text-sm leading-6 text-white/45">
+            The moments, ideas, and stories you want to come back to.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex items-center gap-3 self-start rounded-2xl border border-white/[0.07] bg-black/20 p-3 sm:self-center"
+      >
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#D7F36B]/10 text-[#D7F36B]"
+        >
+          <i class="fa-solid fa-layer-group text-lg"></i>
+        </div>
+
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-wider text-white/35">COLLECTION</p>
+          <p class="mt-1 text-sm font-bold">My Library</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="absolute bottom-0 left-0 h-0.5 w-1/3 bg-gradient-to-r from-[#D7F36B] to-transparent"
+    ></div>
+  </header>
+
+  <!-- ==================== MOBILE NAVIGATION ==================== -->
+  <nav class="rounded-2xl border border-white/[0.07] bg-[#191C19] p-2 xl:hidden">
+    <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <button
+        type="button"
+        class="flex items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-bold text-white/50 transition hover:bg-white/[0.05] hover:text-white"
+      >
+        <i class="fa-solid fa-newspaper"></i>
+        Feed
+      </button>
+
+      <button
+        type="button"
+        class="flex items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-bold text-white/50 transition hover:bg-white/[0.05] hover:text-white"
+      >
+        <i class="fa-solid fa-sparkles"></i>
+        My Posts
+      </button>
+
+      <button
+        type="button"
+        class="flex items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-bold text-white/50 transition hover:bg-white/[0.05] hover:text-white"
+      >
+        <i class="fa-solid fa-earth-americas"></i>
+        Community
+      </button>
+
+      <button
+        type="button"
+        class="flex items-center justify-center gap-2 rounded-xl border border-[#D7F36B]/15 bg-[#D7F36B]/10 px-3 py-3 text-sm font-extrabold text-[#D7F36B]"
+      >
+        <i class="fa-solid fa-bookmark"></i>
+        Saved
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_280px]">
+    <!-- POSTS COLUMN -->
+    <div class="min-w-0 space-y-5">
+      <!-- SECTION TITLE -->
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <div class="mb-2 flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#D7F36B]"></span>
+            <span class="text-xs font-bold uppercase tracking-[0.18em] text-white/40">
+              YOUR PERSONAL SPACE
+            </span>
+          </div>
+
+          <h2 class="text-xl font-extrabold sm:text-2xl">Your saved collection</h2>
+
+          <p class="mt-1 text-sm text-white/40">Posts you've bookmarked for later.</p>
+        </div>
+
+        <span
+          class="inline-flex items-center gap-2 rounded-xl border border-white/[0.07] bg-[#191C19] px-3 py-2 text-xs font-semibold text-white/50"
+        >
+          <i class="fa-solid fa-lock text-[#D7F36B]"></i>
+          Personal collection
+        </span>
+      </div>
+
+      <!-- ==================== SAVED POST 1 ==================== -->
+      <article
+        class="group overflow-hidden rounded-3xl border border-white/[0.07] bg-[#191C19] transition duration-300 hover:border-[#D7F36B]/20"
+      >
+        <!-- POST HEADER -->
+        <div class="flex items-start gap-3 p-4 sm:p-5">
+          <a href="#/profile/6abb7abe8ebe92c2c0d37939" class="shrink-0">
+            <img
+              alt="Mohamad Ahmed"
+              class="h-11 w-11 rounded-2xl border border-white/10 object-cover sm:h-12 sm:w-12"
+              src="https://pub-3cba56bacf9f4965bbb0989e07dada12.r2.dev/linked-posts/1792677931326-a9c5ea75-f12c-41d4-9de7-26179c157e49-avatar-4--1-.webp"
+            />
+          </a>
+
+          <div class="min-w-0 flex-1">
+            <div class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+              <a
+                href="#/profile/6abb7abe8ebe92c2c0d37939"
+                class="text-sm font-extrabold text-white transition hover:text-[#D7F36B] sm:text-base"
+              >
+                Mohamad Ahmed
+              </a>
+
+              <span class="text-sm text-white/40"> updated cover photo. </span>
+            </div>
+
+            <div class="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-white/35">
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-regular fa-clock"></i>
+                6m
+              </span>
+
+              <span>·</span>
+
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-earth-americas"></i>
+                Public
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="hidden items-center gap-2 rounded-xl border border-[#D7F36B]/15 bg-[#D7F36B]/10 px-3 py-2 text-xs font-bold text-[#D7F36B] sm:inline-flex"
+          >
+            <i class="fa-solid fa-bookmark"></i>
+            Saved
+          </div>
+
+          <button
+            type="button"
+            aria-label="More options"
+            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-white/40 transition hover:bg-white/[0.06] hover:text-white"
+          >
+            <i class="fa-solid fa-ellipsis text-lg"></i>
+          </button>
+        </div>
+
+        <!-- MOBILE SAVED BADGE -->
+        <div class="px-4 pb-3 sm:hidden">
+          <span
+            class="inline-flex items-center gap-2 rounded-lg border border-[#D7F36B]/15 bg-[#D7F36B]/10 px-2.5 py-1.5 text-[11px] font-bold text-[#D7F36B]"
+          >
+            <i class="fa-solid fa-bookmark"></i>
+            Saved to your collection
+          </span>
+        </div>
+
+        <!-- POST IMAGE -->
+        <div class="overflow-hidden border-y border-white/[0.06] bg-[#111310]">
+          <button type="button" class="group/image relative block w-full cursor-zoom-in">
+            <img
+              alt="Saved post"
+              class="max-h-[620px] w-full object-cover transition duration-500 group-hover/image:scale-[1.015]"
+              src="https://pub-3cba56bacf9f4965bbb0989e07dada12.r2.dev/linked-posts/1792706855618-62fed40a-ce41-4044-b440-65704881093c-cover.webp"
+            />
+
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+            ></span>
+          </button>
+        </div>
+
+        <!-- ENGAGEMENT -->
+        <div class="px-4 pb-2 pt-4 sm:px-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              class="inline-flex items-center gap-2 text-xs font-semibold text-white/50 transition hover:text-[#D7F36B]"
+            >
+              <span
+                class="flex h-6 w-6 items-center justify-center rounded-full bg-[#D7F36B]/10 text-[#D7F36B]"
+              >
+                <i class="fa-solid fa-thumbs-up text-[11px]"></i>
+              </span>
+              1 like
+            </button>
+
+            <div class="flex flex-wrap items-center gap-3 text-xs text-white/35 sm:gap-4">
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-repeat"></i>
+                0 shares
+              </span>
+
+              <span>0 comments</span>
+
+              <button type="button" class="font-bold text-[#D7F36B] transition hover:text-white">
+                View details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-4 mt-2 border-t border-white/[0.07] sm:mx-5"></div>
+
+        <!-- ACTIONS -->
+        <div class="grid grid-cols-3 gap-1 p-2 sm:px-4">
+          <button
+            type="button"
+            class="flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-bold text-white/45 transition hover:bg-white/[0.05] hover:text-[#D7F36B] sm:text-sm"
+          >
+            <i class="fa-regular fa-thumbs-up text-base"></i>
+            Like
+          </button>
+
+          <button
+            type="button"
+            class="flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-bold text-white/45 transition hover:bg-white/[0.05] hover:text-[#D7F36B] sm:text-sm"
+          >
+            <i class="fa-regular fa-comment text-base"></i>
+            Comment
+          </button>
+
+          <button
+            type="button"
+            class="flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-bold text-white/45 transition hover:bg-white/[0.05] hover:text-[#D7F36B] sm:text-sm"
+          >
+            <i class="fa-solid fa-share-nodes text-base"></i>
+            Share
+          </button>
+        </div>
+      </article>
+
+      <!-- ==================== SAVED POST 2 ==================== -->
+      <article
+        class="group overflow-hidden rounded-3xl border border-white/[0.07] bg-[#191C19] transition duration-300 hover:border-[#D7F36B]/20"
+      >
+        <!-- POST HEADER -->
+        <div class="flex items-start gap-3 p-4 sm:p-5">
+          <a href="#/profile/6ac4e6740bbe45cf7a03cc46" class="shrink-0">
+            <img
+              alt="Beshoy"
+              class="h-11 w-11 rounded-2xl border border-white/10 object-cover sm:h-12 sm:w-12"
+              src="https://pub-3cba56bacf9f4965bbb0989e07dada12.r2.dev/linked-posts/1791911015607-0f166570-a239-47c9-9d75-1d3ef697c855-giphy--1-.gif"
+            />
+          </a>
+
+          <div class="min-w-0 flex-1">
+            <a
+              href="#/profile/6ac4e6740bbe45cf7a03cc46"
+              class="text-sm font-extrabold text-white transition hover:text-[#D7F36B] sm:text-base"
+            >
+              Beshoy
+            </a>
+
+            <div class="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-white/35">
+              <span>@adel97</span>
+              <span>·</span>
+
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-regular fa-clock"></i>
+                9m
+              </span>
+
+              <span>·</span>
+
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-earth-americas"></i>
+                Public
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="hidden items-center gap-2 rounded-xl border border-[#D7F36B]/15 bg-[#D7F36B]/10 px-3 py-2 text-xs font-bold text-[#D7F36B] sm:inline-flex"
+          >
+            <i class="fa-solid fa-bookmark"></i>
+            Saved
+          </div>
+
+          <button
+            type="button"
+            aria-label="More options"
+            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-white/40 transition hover:bg-white/[0.06] hover:text-white"
+          >
+            <i class="fa-solid fa-ellipsis text-lg"></i>
+          </button>
+        </div>
+
+        <!-- MOBILE SAVED BADGE -->
+        <div class="px-4 pb-3 sm:hidden">
+          <span
+            class="inline-flex items-center gap-2 rounded-lg border border-[#D7F36B]/15 bg-[#D7F36B]/10 px-2.5 py-1.5 text-[11px] font-bold text-[#D7F36B]"
+          >
+            <i class="fa-solid fa-bookmark"></i>
+            Saved to your collection
+          </span>
+        </div>
+
+        <!-- POST IMAGE -->
+        <div class="overflow-hidden border-y border-white/[0.06] bg-[#111310]">
+          <button type="button" class="group/image relative block w-full cursor-zoom-in">
+            <img
+              alt="Saved post"
+              class="max-h-[620px] w-full object-cover transition duration-500 group-hover/image:scale-[1.015]"
+              src="https://pub-3cba56bacf9f4965bbb0989e07dada12.r2.dev/linked-posts/1792706691872-f6de6362-19e9-4240-bcfe-edabeddf7a28-IMG_6674.webp"
+            />
+
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+            ></span>
+          </button>
+        </div>
+
+        <!-- ENGAGEMENT -->
+        <div class="px-4 pb-2 pt-4 sm:px-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              class="inline-flex items-center gap-2 text-xs font-semibold text-white/50 transition hover:text-[#D7F36B]"
+            >
+              <span
+                class="flex h-6 w-6 items-center justify-center rounded-full bg-[#D7F36B]/10 text-[#D7F36B]"
+              >
+                <i class="fa-solid fa-thumbs-up text-[11px]"></i>
+              </span>
+              1 like
+            </button>
+
+            <div class="flex flex-wrap items-center gap-3 text-xs text-white/35 sm:gap-4">
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-repeat"></i>
+                0 shares
+              </span>
+
+              <span>0 comments</span>
+
+              <button type="button" class="font-bold text-[#D7F36B] transition hover:text-white">
+                View details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-4 mt-2 border-t border-white/[0.07] sm:mx-5"></div>
+
+        <!-- ACTIONS -->
+        <div class="grid grid-cols-3 gap-1 p-2 sm:px-4">
+          <button
+            type="button"
+            class="flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-bold text-white/45 transition hover:bg-white/[0.05] hover:text-[#D7F36B] sm:text-sm"
+          >
+            <i class="fa-regular fa-thumbs-up text-base"></i>
+            Like
+          </button>
+
+          <button
+            type="button"
+            class="flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-bold text-white/45 transition hover:bg-white/[0.05] hover:text-[#D7F36B] sm:text-sm"
+          >
+            <i class="fa-regular fa-comment text-base"></i>
+            Comment
+          </button>
+
+          <button
+            type="button"
+            class="flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-bold text-white/45 transition hover:bg-white/[0.05] hover:text-[#D7F36B] sm:text-sm"
+          >
+            <i class="fa-solid fa-share-nodes text-base"></i>
+            Share
+          </button>
+        </div>
+      </article>
+
+      <!-- END OF COLLECTION -->
+      <div class="flex items-center justify-center gap-3 py-5 text-xs font-semibold text-white/25">
+        <span class="h-px w-10 bg-white/[0.08]"></span>
+        <i class="fa-solid fa-circle-check text-[#D7F36B]/50"></i>
+        You've reached the end of your collection
+        <span class="h-px w-10 bg-white/[0.08]"></span>
+      </div>
+    </div>
+
+    <!-- ==================== RIGHT SIDEBAR ==================== -->
+    <aside class="hidden space-y-5 xl:block">
+      <!-- YOUR LIBRARY -->
+      <div class="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#191C19] p-5">
+        <div
+          class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-[#D7F36B]/[0.06] blur-2xl"
+        ></div>
+
+        <div class="relative mb-5 flex items-center gap-3">
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#D7F36B]/10 text-[#D7F36B]"
+          >
+            <i class="fa-solid fa-bookmark text-lg"></i>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-extrabold">Your library</h3>
+            <p class="mt-1 text-xs text-white/35">A space for what matters.</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div
+            class="flex items-center gap-3 rounded-2xl border border-white/[0.05] bg-black/15 p-3"
+          >
+            <div
+              class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.04] text-[#D7F36B]"
+            >
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-bold text-white/80">Saved for later</p>
+              <p class="mt-1 text-[11px] text-white/35">Find your favorite posts.</p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-center gap-3 rounded-2xl border border-white/[0.05] bg-black/15 p-3"
+          >
+            <div
+              class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.04] text-[#D7F36B]"
+            >
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-bold text-white/80">Ideas worth keeping</p>
+              <p class="mt-1 text-[11px] text-white/35">Keep inspiration close.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REMINDER CARD -->
+      <div
+        class="rounded-3xl border border-[#D7F36B]/10 bg-gradient-to-br from-[#D7F36B]/[0.07] to-[#191C19] p-5"
+      >
+        <div
+          class="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl border border-[#D7F36B]/15 bg-[#D7F36B]/10 text-[#D7F36B]"
+        >
+          <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+        </div>
+
+        <h3 class="text-sm font-extrabold">A little reminder.</h3>
+
+        <p class="mt-2 text-xs leading-6 text-white/45">
+          Found something you love? Save it, revisit it, and keep the good stuff close.
+        </p>
+
+        <div class="mt-4 flex items-center gap-2 text-xs font-bold text-[#D7F36B]">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#D7F36B]"></span>
+          Make room for inspiration.
+        </div>
+      </div>
+
+      <!-- COMMUNITY CARD -->
+      <div class="rounded-3xl border border-white/[0.07] bg-[#191C19] p-5">
+        <div class="flex items-center gap-3">
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/[0.04] text-white/50"
+          >
+            <i class="fa-solid fa-users text-lg"></i>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-extrabold">Stay connected</h3>
+            <p class="mt-1 text-xs text-white/35">Your people are out there.</p>
+          </div>
+        </div>
+
+        <div class="mt-4 border-t border-white/[0.06] pt-4">
+          <p class="text-xs leading-5 text-white/40">
+            Keep exploring your feed and discover more moments worth saving.
+          </p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
