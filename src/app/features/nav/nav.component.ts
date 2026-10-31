@@ -1,10 +1,10 @@
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IUser } from '../../core/models/iuser.interface';
 
 @Component({
   selector: 'app-nav',
-  imports: [RouterLink],
+  imports: [RouterLink ,RouterLinkActive ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
 })

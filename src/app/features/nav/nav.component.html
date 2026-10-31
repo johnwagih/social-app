@@ -1,4 +1,3 @@
-<!-- Desktop Navbar -->
 
 <header class="sticky top-0 z-50 border-b border-white/[0.07] bg-[#101210]/95 backdrop-blur-xl">
   <nav
@@ -6,7 +5,7 @@
     aria-label="Main navigation"
   >
     <!-- Logo -->
-    <a href="#" class="group flex shrink-0 items-center gap-3">
+    <a routerLink="/feed" class="group flex shrink-0 items-center gap-3">
       <span
         class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#D7F36B] text-xl font-black text-[#171914] shadow-[0_0_25px_rgba(215,243,107,0.10)] transition duration-200 group-hover:rotate-[-5deg] group-hover:scale-105"
       >
@@ -20,20 +19,27 @@
 
     <!-- Desktop Navigation -->
     <div class="hidden items-center gap-2 md:flex">
-      <!-- Feed: Active -->
+
+      <!-- Feed -->
       <a
         routerLink="/feed"
-        aria-current="page"
-        class="relative flex items-center gap-2 rounded-xl bg-[#D7F36B]/[0.08] px-4 py-2.5 text-sm font-semibold text-[#D7F36B] transition hover:bg-[#D7F36B]/[0.12]"
+        routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-gray-400 transition hover:bg-[#D7F36B]/[0.12] hover:text-[#D7F36B]"
       >
         <i class="fa-solid fa-house text-sm"></i>
         <span>Feed</span>
-        <span class="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-[#D7F36B]"></span>
+
+        <span
+          class="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-[#D7F36B] opacity-0 group-active:opacity-100"
+        ></span>
       </a>
 
       <!-- Profile -->
       <a
         routerLink="/profile"
+        routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+        [routerLinkActiveOptions]="{ exact: true }"
         class="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-400 transition hover:bg-white/[0.05] hover:text-white"
       >
         <i class="fa-regular fa-user text-sm"></i>
@@ -43,6 +49,8 @@
       <!-- Notifications -->
       <a
         routerLink="/notification"
+        routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+        [routerLinkActiveOptions]="{ exact: true }"
         aria-label="Notifications, 5 unread"
         class="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-400 transition hover:bg-white/[0.05] hover:text-white"
       >
@@ -63,6 +71,7 @@
     <!-- Profile Dropdown -->
     <div class="flex shrink-0 items-center">
       <details class="group relative">
+
         <!-- Profile Trigger -->
         <summary
           class="flex cursor-pointer list-none items-center gap-2.5 rounded-xl border border-transparent p-1.5 transition hover:border-white/[0.08] hover:bg-white/[0.04] [&::-webkit-details-marker]:hidden"
@@ -74,8 +83,8 @@
           />
 
           <div class="hidden text-left sm:block">
-            <p class="text-sm font-semibold text-white">{{userData().name}}</p>
-            <p class="mt-0.5 text-xs text-gray-500">@{{userData().username}}</p>
+            <p class="text-sm font-semibold text-white">{{ userData().name }}</p>
+            <p class="mt-0.5 text-xs text-gray-500">@{{ userData().username }}</p>
           </div>
 
           <i
@@ -87,22 +96,26 @@
         <div
           class="absolute right-0 top-full z-50 mt-3 w-60 overflow-hidden rounded-2xl border border-white/[0.09] bg-[#1B1E1A] p-2 shadow-2xl shadow-black/40"
         >
+
           <!-- User Information -->
           <div class="mb-2 flex items-center gap-3 border-b border-white/[0.07] px-3 py-3">
             <img
-            [src]="userData().photo"
-            [alt]="userData().name"              class="h-11 w-11 rounded-full border border-[#D7F36B]/30 object-cover"
+              [src]="userData().photo"
+              [alt]="userData().name"
+              class="h-11 w-11 rounded-full border border-[#D7F36B]/30 object-cover"
             />
 
             <div class="min-w-0">
-              <p class="truncate text-sm font-bold text-white">{{userData().name}}</p>
-              <p class="mt-1 truncate text-xs text-gray-500">@{{userData().username}}</p>
+              <p class="truncate text-sm font-bold text-white">{{ userData().name }}</p>
+              <p class="mt-1 truncate text-xs text-gray-500">@{{ userData().username }}</p>
             </div>
           </div>
 
           <!-- My Profile -->
           <a
             routerLink="/profile"
+            routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+            [routerLinkActiveOptions]="{ exact: true }"
             class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-300 transition hover:bg-white/[0.05] hover:text-[#D7F36B]"
           >
             <i class="fa-regular fa-user w-4 text-center"></i>
@@ -112,6 +125,8 @@
           <!-- Settings -->
           <a
             routerLink="/changepassword"
+            routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+            [routerLinkActiveOptions]="{ exact: true }"
             class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-300 transition hover:bg-white/[0.05] hover:text-[#D7F36B]"
           >
             <i class="fa-solid fa-gear w-4 text-center"></i>
@@ -135,17 +150,18 @@
 </header>
 
 <!-- Mobile Bottom Navigation -->
-
 <nav
   aria-label="Mobile navigation"
   class="fixed inset-x-0 bottom-0 z-50 border-t border-white/[0.08] bg-[#101210]/95 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl md:hidden"
 >
   <div class="mx-auto grid max-w-md grid-cols-3 gap-2">
-    <!-- Feed: Active -->
+
+    <!-- Feed -->
     <a
       routerLink="/feed"
-      aria-current="page"
-      class="flex flex-col items-center justify-center gap-1 rounded-xl bg-[#D7F36B]/[0.08] py-2 text-[#D7F36B] transition"
+      routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-gray-500 transition hover:bg-white/[0.04] hover:text-white"
     >
       <i class="fa-solid fa-house text-lg"></i>
       <span class="text-[11px] font-semibold">Feed</span>
@@ -154,6 +170,8 @@
     <!-- Profile -->
     <a
       routerLink="/profile"
+      routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+      [routerLinkActiveOptions]="{ exact: true }"
       class="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-gray-500 transition hover:bg-white/[0.04] hover:text-white"
     >
       <i class="fa-regular fa-user text-lg"></i>
@@ -163,10 +181,13 @@
     <!-- Notifications -->
     <a
       routerLink="/notification"
+      routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
+      [routerLinkActiveOptions]="{ exact: true }"
       class="relative flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-gray-500 transition hover:bg-white/[0.04] hover:text-white"
     >
       <span class="relative">
         <i class="fa-regular fa-bell text-lg"></i>
+
         <span
           class="absolute -right-2 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#D7F36B] px-1 text-[9px] font-black text-[#171914]"
         >
@@ -176,5 +197,6 @@
 
       <span class="text-[11px] font-medium">Notifications</span>
     </a>
+
   </div>
 </nav>
