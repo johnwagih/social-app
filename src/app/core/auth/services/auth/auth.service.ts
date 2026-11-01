@@ -16,4 +16,8 @@ export class AuthService {
   login(data:object):Observable<any>{
    return this.httpClient.post(`${environment.baseUrl}/users/signin`, data)
   }
+  logout(): void {
+  localStorage.removeItem('socialToken');
+  localStorage.removeItem('socialUser');
+}
 }

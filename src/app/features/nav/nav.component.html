@@ -70,7 +70,7 @@
 
     <!-- Profile Dropdown -->
     <div class="flex shrink-0 items-center">
-      <details class="group relative">
+      <details #dropdown class="group relative">
 
         <!-- Profile Trigger -->
         <summary
@@ -113,6 +113,7 @@
 
           <!-- My Profile -->
           <a
+            (click)="dropdown.open = false"
             routerLink="/profile"
             routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -124,6 +125,7 @@
 
           <!-- Settings -->
           <a
+            (click)="dropdown.open = false"
             routerLink="/changepassword"
             routerLinkActive="!bg-[#D7F36B]/[0.08] !text-[#D7F36B]"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -137,6 +139,7 @@
 
           <!-- Log Out -->
           <a
+            (click)="dropdown.open = false ; logout() "
             href="#"
             class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-red-400 transition hover:bg-red-400/10"
           >
