@@ -92,7 +92,7 @@
                     class="inline-flex items-center gap-2 rounded-full border border-white/[0.07] bg-[#111310] px-3 py-1.5 text-[11px] font-medium text-gray-400"
                   >
                     <i class="fa-regular fa-calendar"></i>
-                    Joined {{ listmyprofile().createdAt | date: 'mediumDate' }}
+                    Joined {{ listmyprofile().createdAt | date: 'short' }}
                   </span>
                 }
               </div>
@@ -382,7 +382,7 @@
                       </div>
 
                       <p class="mt-1 text-xs text-gray-500">
-                        {{ post.user.name }} . {{ post.createdAt }}
+                        {{ post.user.name }} . {{ post.createdAt | date:"short" }}
                       </p>
                     </div>
                   </div>
@@ -601,7 +601,7 @@
                           </p>
                           <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-gray-500">
                             <span>
-                              {{ post.createdAt | date: 'mediumDate' }}
+                              {{ post.createdAt | date:"short"}}
                             </span>
                             <span>·</span>
                             <span class="inline-flex items-center gap-1">
@@ -725,7 +725,7 @@
                             </span>
 
                             <span class="text-[10px] text-gray-600">
-                              {{ post.topComment.createdAt | date: 'shortDate' }}
+                              {{ post.topComment.createdAt | date:"short"}}
                             </span>
                           </div>
 

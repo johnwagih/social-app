@@ -3,9 +3,10 @@ import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PostsService } from '../../core/services/posts/posts.service';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-post-details',
-  imports: [RouterLink],
+  imports: [RouterLink , DatePipe],
   templateUrl: './post-details.component.html',
   styleUrl: './post-details.component.css',
 })

@@ -223,7 +223,7 @@
               <i class="fa-solid fa-circle-check text-xs text-[#D7F36B]"></i>
             </div>
 
-            <p class="mt-1 text-xs text-gray-500">{{ post.user.name }} . {{ post.createdAt }}</p>
+            <p class="mt-1 text-xs text-gray-500">{{ post.user.name }} . {{ post.createdAt | date:"short"}}</p>
           </div>
         </div>
 
@@ -295,9 +295,7 @@
 
       <!-- Post Text -->
       <div class="mb-5">
-        <p class="text-sm leading-7 text-gray-300 sm:text-base">
-          {{ post.body }}
-        </p>
+        <p class="break-words overflow-hidden">{{ post.body }}</p>
       </div>
       <!-- Post Image -->
       @if (post.image) {
@@ -367,7 +365,6 @@
             }</span
           ><span class="cursor-pointer text-xs text-gray-500"
             >{{ post.commentsCount }}
-
             @if (post.commentsCount > 1) {
               comments
             } @else {
@@ -393,6 +390,7 @@
         </button>
 
         <button
+        #commentbutton
           type="button"
           class="flex items-center justify-center gap-2 rounded-xl py-3 text-xs font-semibold text-gray-400 transition hover:bg-white/[0.05] hover:text-white sm:text-sm"
         >
@@ -409,9 +407,11 @@
           share
         </button>
       </div>
+      @defer ( on interaction(commentbutton)) {
       <app-posts-comments [postid]="post._id" [photouser]="post.user.photo" [nameMadePost] = "post.user.name">
         class="py-5" ></app-posts-comments
-      >
+      > 
+      }
       <hr />
     </article>
   }

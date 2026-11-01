@@ -3,12 +3,12 @@ import { PostCommentsService } from '../../../../../core/services/comments/post-
 import { Icomments } from '../../../../../core/models/icomments.interface';
 import { IUser } from '../../../../../core/models/iuser.interface';
 import { FormControl, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-posts-comments',
-  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule],
+  imports: [ɵInternalFormsSharedModule, DatePipe ,  ReactiveFormsModule],
   templateUrl: './posts-comments.component.html',
   styleUrl: './posts-comments.component.css',
 })

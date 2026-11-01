@@ -7,10 +7,11 @@ import { FormControl, FormsModule, ReactiveFormsModule, ɵInternalFormsSharedMod
 import { HttpClient } from '@angular/common/http';
 import { form } from '@angular/forms/signals';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-center-feed',
-  imports: [PostsCommentsComponent, RouterLink, ɵInternalFormsSharedModule , ReactiveFormsModule , FormsModule],
+  imports: [PostsCommentsComponent, RouterLink, ɵInternalFormsSharedModule , ReactiveFormsModule , FormsModule , DatePipe],
   templateUrl: './center-feed.component.html',
   styleUrl: './center-feed.component.css',
 })
