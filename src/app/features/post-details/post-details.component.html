@@ -14,10 +14,12 @@
 
         <div class="min-w-0">
           <p class="mb-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#D7F36B]">
-            KINORA COMMUNITY
+            {{ 'postDetails.community' | translate }}
           </p>
 
-          <h1 class="truncate text-xl font-black tracking-tight sm:text-2xl">Post details</h1>
+          <h1 class="truncate text-xl font-black tracking-tight sm:text-2xl">
+            {{ 'postDetails.pageTitle' | translate }}
+          </h1>
         </div>
       </div>
 
@@ -25,7 +27,7 @@
         class="hidden items-center gap-2 rounded-full border border-white/[0.07] bg-[#191C19] px-3 py-2 text-xs text-gray-400 sm:inline-flex"
       >
         <span class="h-1.5 w-1.5 rounded-full bg-[#D7F36B]"></span>
-        Community post
+        {{ 'postDetails.communityPost' | translate }}
       </span>
     </header>
 
@@ -74,7 +76,7 @@
                   </p>
 
                   <div class="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-gray-500">
-                    <span>{{ listPostDetailes().createdAt|date:"short"}}</span>
+                    <span>{{ listPostDetailes().createdAt | date: 'short' }}</span>
 
                     <span>·</span>
 
@@ -101,7 +103,9 @@
               <p class="text-sm leading-7 text-gray-300 sm:text-[15px]">
                 {{ listPostDetailes().body }}
                 <br />
-                <span class="font-semibold text-[#D7F36B]"> Keep growing. Keep being you. </span>
+                <span class="font-semibold text-[#D7F36B]">
+                  {{ 'postDetails.pageMessage' | translate }}
+                </span>
               </p>
             </div>
 
@@ -143,19 +147,19 @@
                     <strong class="font-semibold text-white">{{
                       listPostDetailes().likesCount
                     }}</strong>
-                    people liked this
+                    {{ 'postDetails.peopleLiked' | translate }}
                   </span>
                 </div>
 
                 <div class="flex items-center gap-3 text-xs text-gray-500">
                   <span class="transition hover:text-[#D7F36B]">
-                    {{ listPostDetailes().commentsCount }} comments
+                    {{ listPostDetailes().commentsCount }} {{ 'postDetails.comments' | translate }}
                   </span>
 
                   <span>·</span>
 
                   <span class="transition hover:text-[#D7F36B]">
-                    {{ listPostDetailes().commentsCount }} shares
+                    {{ listPostDetailes().commentsCount }} {{ 'postDetails.shares' | translate }}
                   </span>
                 </div>
               </div>
@@ -168,7 +172,7 @@
                 class="group flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-semibold text-gray-400 transition duration-200 hover:bg-[#D7F36B]/[0.08] hover:text-[#D7F36B] sm:text-sm"
               >
                 <i class="fa-regular fa-heart text-base transition group-hover:scale-110"></i>
-                Like
+                {{ 'postDetails.like' | translate }}
               </button>
 
               <button
@@ -176,7 +180,7 @@
                 class="group flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-semibold text-gray-400 transition duration-200 hover:bg-[#D7F36B]/[0.08] hover:text-[#D7F36B] sm:text-sm"
               >
                 <i class="fa-regular fa-comment text-base transition group-hover:scale-110"></i>
-                Comment
+                {{ 'postDetails.comment' | translate }}
               </button>
 
               <button
@@ -184,7 +188,7 @@
                 class="group flex items-center justify-center gap-2 rounded-xl px-2 py-3 text-xs font-semibold text-gray-400 transition duration-200 hover:bg-[#D7F36B]/[0.08] hover:text-[#D7F36B] sm:text-sm"
               >
                 <i class="fa-solid fa-share-nodes text-base transition group-hover:scale-110"></i>
-                Share
+                {{ 'postDetails.share' | translate }}
               </button>
             </div>
           </article>
@@ -202,7 +206,9 @@
                 {{ listPostDetailes().likesCount }}
               </p>
 
-              <p class="mt-1 text-[10px] text-gray-500 sm:text-xs">Total likes</p>
+              <p class="mt-1 text-[10px] text-gray-500 sm:text-xs">
+                {{ 'postDetails.totalLikes' | translate }}
+              </p>
             </div>
 
             <div class="rounded-xl border border-white/[0.07] bg-[#191C19] p-3 sm:p-4">
@@ -216,7 +222,9 @@
                 {{ listPostDetailes().commentsCount }}
               </p>
 
-              <p class="mt-1 text-[10px] text-gray-500 sm:text-xs">Comments</p>
+              <p class="mt-1 text-[10px] text-gray-500 sm:text-xs">
+                {{ 'postDetails.comments' | translate }}
+              </p>
             </div>
 
             <div class="rounded-xl border border-white/[0.07] bg-[#191C19] p-3 sm:p-4">
@@ -230,7 +238,9 @@
                 {{ listPostDetailes().sharesCount }}
               </p>
 
-              <p class="mt-1 text-[10px] text-gray-500 sm:text-xs">Shares</p>
+              <p class="mt-1 text-[10px] text-gray-500 sm:text-xs">
+                {{ 'postDetails.shares' | translate }}
+              </p>
             </div>
           </div>
         </section>
@@ -241,10 +251,10 @@
       <div
         class="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left"
       >
-        <p class="text-xs text-gray-600">A little space to be yourself.</p>
+        <p class="text-xs text-gray-600">{{ 'postDetails.footerTagline' | translate }}</p>
 
         <p class="text-[10px] font-medium tracking-wide text-gray-700">
-          © 2026 KINORA · MADE FOR REAL CONNECTIONS
+          © 2026 KINORA · {{ 'postDetails.footerCopyright' | translate }}
         </p>
       </div>
     </footer>

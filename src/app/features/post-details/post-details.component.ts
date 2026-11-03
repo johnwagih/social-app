@@ -4,9 +4,10 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PostsService } from '../../core/services/posts/posts.service';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-post-details',
-  imports: [RouterLink , DatePipe],
+  imports: [ TranslatePipe, RouterLink , DatePipe],
   templateUrl: './post-details.component.html',
   styleUrl: './post-details.component.css',
 })

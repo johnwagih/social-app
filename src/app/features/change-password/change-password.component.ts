@@ -4,10 +4,11 @@ import { validate } from '@angular/forms/signals';
 import { RouterLink } from '@angular/router';
 import { ChangePassService } from '../../core/services/change-pass/change-pass.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-change-password',
-  imports: [RouterLink , ReactiveFormsModule] ,
+  imports: [TranslatePipe ,RouterLink , ReactiveFormsModule] ,
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.css',
 })

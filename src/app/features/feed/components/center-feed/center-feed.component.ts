@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { PostsService } from '../../../../core/services/posts/posts.service';
 import { PostsCommentsComponent } from '../posts-comments/posts-comments/posts-comments.component';
@@ -11,7 +12,7 @@ import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-center-feed',
-  imports: [PostsCommentsComponent, RouterLink, ɵInternalFormsSharedModule , ReactiveFormsModule , FormsModule , DatePipe],
+  imports: [  TranslatePipe ,PostsCommentsComponent, RouterLink, ɵInternalFormsSharedModule , ReactiveFormsModule , FormsModule , DatePipe],
   templateUrl: './center-feed.component.html',
   styleUrl: './center-feed.component.css',
 })

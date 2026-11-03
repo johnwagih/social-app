@@ -1,4 +1,3 @@
-
 <header class="sticky top-0 z-50 border-b border-white/[0.07] bg-[#101210]/95 backdrop-blur-xl">
   <nav
     class="mx-auto flex max-w-[1600px] items-center justify-between gap-5 px-5 py-3 sm:px-8 lg:px-12"
@@ -19,7 +18,6 @@
 
     <!-- Desktop Navigation -->
     <div class="hidden items-center gap-2 md:flex">
-
       <!-- Feed -->
       <a
         routerLink="/feed"
@@ -28,7 +26,7 @@
         class="relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-gray-400 transition hover:bg-[#D7F36B]/[0.12] hover:text-[#D7F36B]"
       >
         <i class="fa-solid fa-house text-sm"></i>
-        <span>Feed</span>
+        <span>{{ 'navbar.feed' | translate }}</span>
 
         <span
           class="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-[#D7F36B] opacity-0 group-active:opacity-100"
@@ -43,7 +41,7 @@
         class="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-400 transition hover:bg-white/[0.05] hover:text-white"
       >
         <i class="fa-regular fa-user text-sm"></i>
-        <span>Profile</span>
+        <span>{{ 'navbar.profile' | translate }}</span>
       </a>
 
       <!-- Notifications -->
@@ -58,7 +56,7 @@
           <i class="fa-regular fa-bell text-base"></i>
         </span>
 
-        <span>Notifications</span>
+        <span>{{ 'navbar.notifications' | translate }}</span>
 
         <span
           class="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#D7F36B] px-1.5 text-[10px] font-black text-[#171914]"
@@ -69,9 +67,75 @@
     </div>
 
     <!-- Profile Dropdown -->
-    <div class="flex shrink-0 items-center">
-      <details #dropdown class="group relative">
+    <!-- Language Switcher + Profile Dropdown -->
+    <div class="flex shrink-0 items-center gap-2">
+      <!-- Language Switcher -->
+      <details class="group relative">
+        <!-- Language Trigger -->
+        <summary
+          class="flex cursor-pointer list-none items-center gap-2 rounded-xl border border-white/[0.08] bg-[#191C19] px-3 py-2.5 text-sm font-semibold text-gray-300 transition hover:border-[#D7F36B]/30 hover:text-[#D7F36B] [&::-webkit-details-marker]:hidden"
+        >
+          <i class="fa-solid fa-globe text-[#D7F36B]"></i>
 
+          <span class="uppercase">{{ selectedLanguage }}</span>
+
+          <i
+            class="fa-solid fa-chevron-down text-[10px] text-gray-500 transition duration-200 group-open:rotate-180"
+          ></i>
+        </summary>
+
+        <!-- Language Dropdown -->
+        <div
+          class="absolute right-0 top-full z-50 mt-3 w-40 overflow-hidden rounded-xl border border-white/[0.09] bg-[#1B1E1A] p-1.5 shadow-2xl shadow-black/40"
+        >
+          <!-- English -->
+          <button
+            type="button"
+            (click)="changeLanguage('en')"
+            onclick="this.closest('details').removeAttribute('open')"
+            [ngClass]="
+              selectedLanguage === 'en'
+                ? 'bg-[#D7F36B]/10 font-semibold text-[#D7F36B]'
+                : 'text-gray-400 hover:bg-white/[0.05] hover:text-white'
+            "
+            class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition"
+          >
+            <span class="flex items-center gap-2.5">
+              <span>🇺🇸</span>
+              English
+            </span>
+
+            @if (selectedLanguage === 'en') {
+              <i class="fa-solid fa-check text-xs"></i>
+            }
+          </button>
+
+          <!-- Arabic -->
+          <button
+            type="button"
+            (click)="changeLanguage('ar')"
+            onclick="this.closest('details').removeAttribute('open')"
+            [ngClass]="
+              selectedLanguage === 'ar'
+                ? 'bg-[#D7F36B]/10 font-semibold text-[#D7F36B]'
+                : 'text-gray-400 hover:bg-white/[0.05] hover:text-white'
+            "
+            class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition"
+          >
+            <span class="flex items-center gap-2.5">
+              <span>🇪🇬</span>
+              العربية
+            </span>
+
+            @if (selectedLanguage === 'ar') {
+              <i class="fa-solid fa-check text-xs"></i>
+            }
+          </button>
+        </div>
+      </details>
+
+      <!-- Profile Dropdown -->
+      <details #dropdown class="group relative">
         <!-- Profile Trigger -->
         <summary
           class="flex cursor-pointer list-none items-center gap-2.5 rounded-xl border border-transparent p-1.5 transition hover:border-white/[0.08] hover:bg-white/[0.04] [&::-webkit-details-marker]:hidden"
@@ -96,7 +160,6 @@
         <div
           class="absolute right-0 top-full z-50 mt-3 w-60 overflow-hidden rounded-2xl border border-white/[0.09] bg-[#1B1E1A] p-2 shadow-2xl shadow-black/40"
         >
-
           <!-- User Information -->
           <div class="mb-2 flex items-center gap-3 border-b border-white/[0.07] px-3 py-3">
             <img
@@ -120,7 +183,7 @@
             class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-300 transition hover:bg-white/[0.05] hover:text-[#D7F36B]"
           >
             <i class="fa-regular fa-user w-4 text-center"></i>
-            My Profile
+            {{ 'navbar.myProfile' | translate }}
           </a>
 
           <!-- Settings -->
@@ -132,19 +195,19 @@
             class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-300 transition hover:bg-white/[0.05] hover:text-[#D7F36B]"
           >
             <i class="fa-solid fa-gear w-4 text-center"></i>
-            Settings
+            {{ 'navbar.settings' | translate }}
           </a>
 
           <div class="my-1 border-t border-white/[0.07]"></div>
 
           <!-- Log Out -->
           <a
-            (click)="dropdown.open = false ; logout() "
+            (click)="dropdown.open = false; logout()"
             href="#"
             class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-red-400 transition hover:bg-red-400/10"
           >
             <i class="fa-solid fa-arrow-right-from-bracket w-4 text-center"></i>
-            Log out
+            {{ 'navbar.logout' | translate }}
           </a>
         </div>
       </details>
@@ -158,7 +221,6 @@
   class="fixed inset-x-0 bottom-0 z-50 border-t border-white/[0.08] bg-[#101210]/95 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl md:hidden"
 >
   <div class="mx-auto grid max-w-md grid-cols-3 gap-2">
-
     <!-- Feed -->
     <a
       routerLink="/feed"
@@ -167,7 +229,7 @@
       class="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-gray-500 transition hover:bg-white/[0.04] hover:text-white"
     >
       <i class="fa-solid fa-house text-lg"></i>
-      <span class="text-[11px] font-semibold">Feed</span>
+      <span class="text-[11px] font-semibold">{{ 'navbar.feed' | translate }}</span>
     </a>
 
     <!-- Profile -->
@@ -178,7 +240,7 @@
       class="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-gray-500 transition hover:bg-white/[0.04] hover:text-white"
     >
       <i class="fa-regular fa-user text-lg"></i>
-      <span class="text-[11px] font-medium">Profile</span>
+      <span class="text-[11px] font-medium">{{ 'navbar.profile' | translate }}</span>
     </a>
 
     <!-- Notifications -->
@@ -198,8 +260,7 @@
         </span>
       </span>
 
-      <span class="text-[11px] font-medium">Notifications</span>
+      <span class="text-[11px] font-medium">{{ 'navbar.notifications' | translate }}</span>
     </a>
-
   </div>
 </nav>

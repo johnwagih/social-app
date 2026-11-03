@@ -17,8 +17,11 @@
   </section>
 
   <!-- Sidebar Navigation -->
-  <nav aria-label="Feed sidebar">
-    <p class="mb-4 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600">MENU</p>
+  <nav [attr.aria-label]="'sidebar.feedAriaLabel' | translate">
+    <p class="mb-4 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600">
+      {{ 'sidebar.menu' | translate }}
+    </p>
+
     <div class="space-y-2">
       <!-- Active item -->
       <!-- Home Feed -->
@@ -27,9 +30,10 @@
           class="flex items-center gap-4 rounded-xl bg-[#D7F36B] px-4 py-3.5 text-sm font-bold text-[#171914] shadow-[0_8px_30px_rgba(215,243,107,0.07)]"
         >
           <i class="fa-solid fa-house w-4 text-center"></i>
-          Home Feed
+          {{ 'sidebar.homeFeed' | translate }}
         </a>
       </button>
+
       <!-- My Profile -->
       <button class="cursor-pointer">
         <a
@@ -55,25 +59,27 @@
             <path d="M22 4h-4"></path>
             <circle cx="4" cy="20" r="2"></circle>
           </svg>
-          My Posts
+          {{ 'sidebar.myPosts' | translate }}
         </a>
       </button>
+
       <!-- Saved Posts -->
       <button routerLink="/saveposts" class="cursor-pointer">
         <a
           class="flex items-center gap-4 rounded-xl px-4 py-3.5 text-sm font-medium text-gray-400 transition hover:bg-white/[0.04] hover:text-white"
         >
           <i class="fa-regular fa-bookmark w-4 text-center"></i>
-          Saved Posts
+          {{ 'sidebar.savedPosts' | translate }}
         </a>
       </button>
+
       <!-- Community -->
       <button routerLink="/feed" class="cursor-pointer">
         <a
           class="flex items-center gap-4 rounded-xl px-4 py-3.5 text-sm font-medium text-gray-400 transition hover:bg-white/[0.04] hover:text-white"
         >
           <i class="fa-solid fa-house w-4 text-center"></i>
-          Community
+          {{ 'sidebar.community' | translate }}
         </a>
       </button>
     </div>
@@ -81,7 +87,9 @@
 
   <!-- Sidebar Footer -->
   <div class="mt-12 border-t border-white/[0.07] pt-5">
-    <p class="text-xs leading-6 text-gray-600">A little space to be yourself.</p>
+    <p class="text-xs leading-6 text-gray-600">
+      {{ 'sidebar.footer' | translate }}
+    </p>
 
     <p class="mt-3 text-[10px] font-medium text-gray-700">© 2026 KINORA</p>
   </div>

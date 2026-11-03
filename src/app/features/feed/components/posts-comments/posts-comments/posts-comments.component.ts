@@ -5,10 +5,11 @@ import { IUser } from '../../../../../core/models/iuser.interface';
 import { FormControl, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe, formatDate } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-posts-comments',
-  imports: [ɵInternalFormsSharedModule, DatePipe ,  ReactiveFormsModule],
+  imports:  [TranslatePipe,ɵInternalFormsSharedModule, DatePipe ,  ReactiveFormsModule],
   templateUrl: './posts-comments.component.html',
   styleUrl: './posts-comments.component.css',
 })

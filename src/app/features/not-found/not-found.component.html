@@ -45,16 +45,15 @@
       <span
         class="mb-4 inline-block rounded-full border border-[#D7F36B]/20 bg-[#D7F36B]/[0.06] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D7F36B]"
       >
-        Page Not Found
+        {{ 'notFound.pageNotFound' | translate }}
       </span>
 
       <h1 class="mb-4 text-3xl font-black tracking-tight sm:text-5xl">
-        Lost in the <span class="text-[#D7F36B]">wrong corner?</span>
+        {{ 'notFound.heading' | translate }} <span class="text-[#D7F36B]">{{ 'notFound.headingHighlight' | translate }}</span>
       </h1>
 
       <p class="mx-auto max-w-md text-sm leading-7 text-[#A1A69F] sm:text-base">
-        Looks like this page doesn't exist or may have been moved. Don't worry, there's always a way
-        back to your people.
+        {{ 'notFound.description' | translate }}
       </p>
     </div>
 
@@ -65,7 +64,7 @@
         class="flex w-full items-center justify-center gap-3 rounded-xl bg-[#D7F36B] px-7 py-4 text-sm font-black text-[#101210] transition-all duration-300 hover:-translate-y-1 hover:bg-[#e4ff83] hover:shadow-[0_10px_35px_rgba(215,243,107,0.15)] sm:w-auto"
       >
         <i class="fa-solid fa-house"></i>
-        Back to Home
+        {{ 'notFound.backToHome' | translate }}
       </a>
 
       <button
@@ -74,13 +73,13 @@
         class=" cursor-pointer flex w-full items-center justify-center gap-3 rounded-xl border border-white/[0.08] bg-[#191C19] px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:border-[#D7F36B]/30 hover:bg-[#202420] sm:w-auto"
       >
         <i class="fa-solid fa-arrow-left"></i>
-        Go Back
+        {{ 'notFound.goBack' | translate }}
       </button>
     </div>
 
     <!-- Footer -->
     <p class="mt-16 text-xs font-medium tracking-wide text-[#62675F]">
-      © 2026 KINORA. A little more human.
+      © 2026 KINORA. {{ 'notFound.footer' | translate }}
     </p>
   </section>
 </main>

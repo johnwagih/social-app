@@ -5,9 +5,10 @@ import { DatePipe } from '@angular/common';
 import { Imyposts } from '../../core/models/imyposts.interface';
 import { IsavedPost } from '../../core/models/isaved-post.interface';
 import { ToastrService } from 'ngx-toastr';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-profile',
-  imports: [DatePipe],
+  imports: [ TranslatePipe , DatePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })

@@ -1,7 +1,10 @@
 <!-- ==================== PROFILE PAGE ==================== -->
+
 <div class="min-h-screen bg-[#101210] text-white">
   <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+
     <!-- ==================== PROFILE COVER ==================== -->
+
     <section
       class="relative h-48 overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-br from-[#193C35] via-[#1d302b] to-[#101210] sm:h-60 lg:h-72"
       [style.backgroundImage]="
@@ -14,14 +17,16 @@
       [style.backgroundSize]="listmyprofile().cover ? 'cover' : null"
       [style.backgroundPosition]="listmyprofile().cover ? 'center' : null"
     >
-      <!-- Decorative Background: shown only when no cover image exists -->
+      <!-- Decorative Background -->
       @if (!listmyprofile().cover) {
         <div
           class="pointer-events-none absolute -left-16 -top-20 h-64 w-64 rounded-full bg-[#D7F36B]/10 blur-3xl"
         ></div>
+
         <div
           class="pointer-events-none absolute right-10 top-0 h-64 w-64 rounded-full bg-emerald-400/[0.08] blur-3xl"
         ></div>
+
         <div
           class="pointer-events-none absolute inset-0 opacity-[0.08]"
           style="
@@ -41,58 +46,73 @@
         >
           <i class="fa-solid fa-user-astronaut"></i>
         </span>
+
         <div>
-          <p class="text-xs font-black tracking-[0.18em] text-white">YOUR SPACE</p>
-          <p class="mt-1 text-[10px] text-gray-300">Your story, your people.</p>
+          <p class="text-xs font-black tracking-[0.18em] text-white">
+            {{ 'profile.yourSpace' | translate }}
+          </p>
+
+          <p class="mt-1 text-[10px] text-gray-300">
+            {{ 'profile.yourStory' | translate }}
+          </p>
         </div>
       </div>
     </section>
 
     <!-- ==================== PROFILE IDENTITY ==================== -->
+
     <section class="relative z-10 -mt-12 px-3 sm:-mt-16 sm:px-7">
       <div
         class="rounded-2xl border border-white/[0.08] bg-[#191C19] p-4 shadow-2xl shadow-black/20 sm:rounded-3xl sm:p-7"
       >
         <div class="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
           <div class="flex min-w-0 items-end gap-4 sm:gap-6">
+
             <!-- Avatar -->
+
             <div class="relative shrink-0">
               <img
                 [src]="listmyprofile().photo"
                 [alt]="listmyprofile().name"
                 class="h-24 w-24 rounded-full border-4 border-[#191C19] object-cover shadow-xl ring-1 ring-[#D7F36B]/30 sm:h-32 sm:w-32"
               />
+
               <span
                 class="absolute bottom-1 right-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#191C19] bg-[#D7F36B] text-[#171914]"
-                title="Profile photo"
+                [title]="'profile.profilePhoto' | translate"
               >
                 <i class="fa-solid fa-user text-xs"></i>
               </span>
             </div>
 
             <!-- User Information -->
+
             <div class="min-w-0 flex-1 pb-1">
               <h1
                 class="break-words text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl"
               >
                 {{ listmyprofile().name }}
               </h1>
+
               <p class="mt-1 break-all text-sm font-medium text-gray-500 sm:text-base">
                 {{ listmyprofile().username }}
               </p>
+
               <div class="mt-3 flex flex-wrap items-center gap-2">
                 <span
                   class="inline-flex items-center gap-2 rounded-full border border-[#D7F36B]/20 bg-[#D7F36B]/[0.07] px-3 py-1.5 text-[11px] font-bold text-[#D7F36B]"
                 >
                   <i class="fa-solid fa-users"></i>
-                  KINORA member
+                  {{ 'profile.member' | translate }}
                 </span>
+
                 @if (listmyprofile().createdAt) {
                   <span
                     class="inline-flex items-center gap-2 rounded-full border border-white/[0.07] bg-[#111310] px-3 py-1.5 text-[11px] font-medium text-gray-400"
                   >
                     <i class="fa-regular fa-calendar"></i>
-                    Joined {{ listmyprofile().createdAt | date: 'short' }}
+                    {{ 'profile.joined' | translate }}
+                    {{ listmyprofile().createdAt | date: 'short' }}
                   </span>
                 }
               </div>
@@ -101,6 +121,7 @@
         </div>
 
         <!-- Profile details -->
+
         <div
           class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/[0.07] pt-5"
         >
@@ -111,28 +132,38 @@
               >
                 <i class="fa-solid fa-venus-mars"></i>
               </span>
-              <span
-                ><span class="text-gray-500">Gender</span
-                ><strong class="ml-1 font-semibold text-gray-200">{{
-                  listmyprofile().gender
-                }}</strong></span
-              >
+
+              <span>
+                <span class="text-gray-500">
+                  {{ 'profile.gender' | translate }}
+                </span>
+
+                <strong class="ml-1 font-semibold text-gray-200">
+                  {{ listmyprofile().gender }}
+                </strong>
+              </span>
             </div>
           }
+
           @if (listmyprofile().dateOfBirth) {
             <span class="hidden h-5 w-px bg-white/[0.08] sm:block"></span>
+
             <div class="flex items-center gap-2 text-xs text-gray-400">
               <span
                 class="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04] text-[#D7F36B]"
               >
                 <i class="fa-regular fa-calendar"></i>
               </span>
-              <span
-                ><span class="text-gray-500">Date of birth</span
-                ><strong class="ml-1 font-semibold text-gray-200">{{
-                  listmyprofile().dateOfBirth | date: 'mediumDate'
-                }}</strong></span
-              >
+
+              <span>
+                <span class="text-gray-500">
+                  {{ 'profile.dateOfBirth' | translate }}
+                </span>
+
+                <strong class="ml-1 font-semibold text-gray-200">
+                  {{ listmyprofile().dateOfBirth | date: 'mediumDate' }}
+                </strong>
+              </span>
             </div>
           }
         </div>
@@ -140,83 +171,123 @@
     </section>
 
     <!-- ==================== PROFILE STATISTICS ==================== -->
+
     <section class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-3">
+
       <!-- Followers -->
+
       <article
         class="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#191C19] p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[#D7F36B]/25 sm:p-5"
       >
         <div
           class="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full bg-[#D7F36B]/[0.06] blur-2xl transition group-hover:bg-[#D7F36B]/[0.12]"
         ></div>
+
         <div class="flex items-center justify-between gap-2">
-          <span class="text-xs font-semibold text-gray-400 sm:text-sm">Followers</span>
+          <span class="text-xs font-semibold text-gray-400 sm:text-sm">
+            {{ 'profile.followers' | translate }}
+          </span>
+
           <span
             class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#D7F36B]/[0.09] text-[#D7F36B]"
-            ><i class="fa-solid fa-user-group"></i
-          ></span>
+          >
+            <i class="fa-solid fa-user-group"></i>
+          </span>
         </div>
+
         <p class="mt-4 text-3xl font-black tracking-tight text-white">
           {{ listmyprofile().followersCount }}
         </p>
-        <p class="mt-1 text-[10px] text-gray-600 sm:text-xs">People following you</p>
+
+        <p class="mt-1 text-[10px] text-gray-600 sm:text-xs">
+          {{ 'profile.peopleFollowingYou' | translate }}
+        </p>
       </article>
 
       <!-- Following -->
+
       <article
         class="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#191C19] p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[#D7F36B]/25 sm:p-5"
       >
         <div
           class="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full bg-[#D7F36B]/[0.06] blur-2xl transition group-hover:bg-[#D7F36B]/[0.12]"
         ></div>
+
         <div class="flex items-center justify-between gap-2">
-          <span class="text-xs font-semibold text-gray-400 sm:text-sm">Following</span>
+          <span class="text-xs font-semibold text-gray-400 sm:text-sm">
+            {{ 'profile.following' | translate }}
+          </span>
+
           <span
             class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#D7F36B]/[0.09] text-[#D7F36B]"
-            ><i class="fa-solid fa-user-plus"></i
-          ></span>
+          >
+            <i class="fa-solid fa-user-plus"></i>
+          </span>
         </div>
+
         <p class="mt-4 text-3xl font-black tracking-tight text-white">
           {{ listmyprofile().followingCount }}
         </p>
-        <p class="mt-1 text-[10px] text-gray-600 sm:text-xs">People you follow</p>
+
+        <p class="mt-1 text-[10px] text-gray-600 sm:text-xs">
+          {{ 'profile.peopleYouFollow' | translate }}
+        </p>
       </article>
 
       <!-- Bookmarks -->
+
       <article
         class="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#191C19] p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[#D7F36B]/25 sm:p-5"
       >
         <div
           class="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full bg-[#D7F36B]/[0.06] blur-2xl transition group-hover:bg-[#D7F36B]/[0.12]"
         ></div>
+
         <div class="flex items-center justify-between gap-2">
-          <span class="text-xs font-semibold text-gray-400 sm:text-sm">Bookmarks</span>
+          <span class="text-xs font-semibold text-gray-400 sm:text-sm">
+            {{ 'profile.bookmarks' | translate }}
+          </span>
+
           <span
             class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#D7F36B]/[0.09] text-[#D7F36B]"
-            ><i class="fa-regular fa-bookmark"></i
-          ></span>
+          >
+            <i class="fa-regular fa-bookmark"></i>
+          </span>
         </div>
+
         <p class="mt-4 text-3xl font-black tracking-tight text-white">
           {{ listmyprofile().bookmarksCount }}
         </p>
-        <p class="mt-1 text-[10px] text-gray-600 sm:text-xs">Posts saved for later</p>
+
+        <p class="mt-1 text-[10px] text-gray-600 sm:text-xs">
+          {{ 'profile.postsSavedForLater' | translate }}
+        </p>
       </article>
     </section>
 
     <!-- ==================== ABOUT SECTION ==================== -->
+
     <section class="mt-6 grid items-start gap-6 lg:grid-cols-[0.85fr_1.5fr]">
+
       <!-- ABOUT CARD -->
+
       <article class="overflow-hidden rounded-2xl border border-white/[0.07] bg-[#191C19]">
         <div class="flex items-center justify-between border-b border-white/[0.07] px-5 py-4">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D7F36B]">
-              PROFILE DETAILS
+              {{ 'profile.profileDetails' | translate }}
             </p>
-            <h2 class="mt-1 text-lg font-black text-white">About</h2>
+
+            <h2 class="mt-1 text-lg font-black text-white">
+              {{ 'profile.about' | translate }}
+            </h2>
           </div>
+
           <span
             class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06] bg-[#111310] text-[#D7F36B]"
-            ><i class="fa-regular fa-address-card"></i
-          ></span>
+          >
+            <i class="fa-regular fa-address-card"></i>
+          </span>
         </div>
 
         <div class="space-y-3 p-4 sm:p-5">
@@ -225,12 +296,15 @@
           >
             <span
               class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D7F36B]/[0.08] text-[#D7F36B]"
-              ><i class="fa-regular fa-envelope"></i
-            ></span>
+            >
+              <i class="fa-regular fa-envelope"></i>
+            </span>
+
             <div class="min-w-0">
               <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-600">
-                Email address
+                {{ 'profile.emailAddress' | translate }}
               </p>
+
               <p class="mt-1 break-all text-xs font-medium text-gray-300">
                 {{ listmyprofile().email }}
               </p>
@@ -243,13 +317,18 @@
             >
               <span
                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D7F36B]/[0.08] text-[#D7F36B]"
-                ><i class="fa-solid fa-venus-mars"></i
-              ></span>
+              >
+                <i class="fa-solid fa-venus-mars"></i>
+              </span>
+
               <div>
                 <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-600">
-                  Gender
+                  {{ 'profile.gender' | translate }}
                 </p>
-                <p class="mt-1 text-xs font-medium text-gray-300">{{ listmyprofile().gender }}</p>
+
+                <p class="mt-1 text-xs font-medium text-gray-300">
+                  {{ listmyprofile().gender }}
+                </p>
               </div>
             </div>
           }
@@ -260,12 +339,15 @@
             >
               <span
                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D7F36B]/[0.08] text-[#D7F36B]"
-                ><i class="fa-regular fa-calendar"></i
-              ></span>
+              >
+                <i class="fa-regular fa-calendar"></i>
+              </span>
+
               <div>
                 <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-600">
-                  Date of birth
+                  {{ 'profile.dateOfBirth' | translate }}
                 </p>
+
                 <p class="mt-1 text-xs font-medium text-gray-300">
                   {{ listmyprofile().dateOfBirth | date: 'mediumDate' }}
                 </p>
@@ -275,57 +357,78 @@
         </div>
       </article>
 
-      <!-- KINORA BRAND CARD (static copy, not user data) -->
+      <!-- KINORA BRAND CARD -->
+
       <article
         class="relative min-h-[250px] overflow-hidden rounded-2xl border border-white/[0.07] bg-[#191C19] p-5 sm:p-7"
       >
         <div
           class="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-[#D7F36B]/[0.07] blur-3xl"
         ></div>
+
         <div
           class="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-[#D7F36B]/[0.025] to-transparent"
         ></div>
+
         <div class="relative z-10 flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-[#D7F36B]"></span>
+
           <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D7F36B]">
-            YOUR KINORA JOURNEY
+            {{ 'profile.yourJourney' | translate }}
           </p>
         </div>
+
         <div class="relative z-10 mt-7 max-w-lg">
           <h2 class="text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl">
-            Every connection <span class="text-[#D7F36B]">starts somewhere.</span>
+            {{ 'profile.everyConnection' | translate }}
+            <span class="text-[#D7F36B]">
+              {{ 'profile.startsSomewhere' | translate }}
+            </span>
           </h2>
+
           <p class="mt-3 max-w-md text-sm leading-7 text-gray-400">
-            Your profile is your own little corner of KINORA. Share your moments, discover people,
-            and build meaningful connections with the community.
+            {{ 'profile.description' | translate }}
           </p>
         </div>
+
         <div class="relative z-10 mt-7 flex flex-wrap gap-2">
           <span
             class="inline-flex items-center gap-2 rounded-full border border-white/[0.07] bg-[#111310] px-3 py-2 text-[11px] font-medium text-gray-400"
-            ><i class="fa-regular fa-heart text-[#D7F36B]"></i>Share moments</span
           >
+            <i class="fa-regular fa-heart text-[#D7F36B]"></i>
+            {{ 'profile.shareMoments' | translate }}
+          </span>
+
           <span
             class="inline-flex items-center gap-2 rounded-full border border-white/[0.07] bg-[#111310] px-3 py-2 text-[11px] font-medium text-gray-400"
-            ><i class="fa-solid fa-user-group text-[#D7F36B]"></i>Meet people</span
           >
+            <i class="fa-solid fa-user-group text-[#D7F36B]"></i>
+            {{ 'profile.meetPeople' | translate }}
+          </span>
         </div>
       </article>
     </section>
 
     <!-- ==================== POSTS SECTION ==================== -->
+
     <section class="mt-8">
       <div class="mb-5 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D7F36B]">
-            YOUR CONTENT
+            {{ 'profile.yourContent' | translate }}
           </p>
+
           <h2 class="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
-            Your collection
+            {{ 'profile.yourCollection' | translate }}
           </h2>
-          <p class="mt-2 text-sm text-gray-500">Your posts and bookmarks, all in one place.</p>
+
+          <p class="mt-2 text-sm text-gray-500">
+            {{ 'profile.collectionDescription' | translate }}
+          </p>
         </div>
-        <!-- Static UI tabs retained; API interface does not provide posts/bookmark item lists -->
+
+        <!-- Static UI tabs retained -->
+
         <div
           class="grid grid-cols-2 gap-1 rounded-xl border border-white/[0.07] bg-[#191C19] p-1 sm:inline-flex"
         >
@@ -338,9 +441,11 @@
             class="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-xs font-extrabold transition hover:bg-white/[0.05] sm:px-5"
           >
             <i class="fa-regular fa-file-lines"></i>
-            My Posts
-            ({{listmyposts().posts.length}})
+
+            {{ 'profile.myPosts' | translate }}
+            ({{ listmyposts().posts.length }})
           </button>
+
           <button
             type="button"
             (click)="activeCollection = 'saved'"
@@ -350,22 +455,27 @@
             class="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-xs font-semibold transition hover:bg-white/[0.05] sm:px-5"
           >
             <i class="fa-regular fa-bookmark"></i>
-            Saved ({{ listmyprofile().bookmarksCount }})
+
+            {{ 'profile.saved' | translate }}
+            ({{ listmyprofile().bookmarksCount }})
           </button>
         </div>
       </div>
-      <!-- API interface has no posts array, so avoid claiming the user has no posts -->
+
       @if (activeCollection === 'posts') {
         <div
           class="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-white/[0.07] bg-[#191C19] px-5 py-10 text-center sm:py-14"
         >
           <div
-            class="pointer-events-none absolute left-1/2 top-0 h-52 w-52 -translate-x-1/2 rounded-full bg-[#D7F36B]/[0.04] blur-3xl mx-auto"
+            class="pointer-events-none absolute left-1/2 top-0 mx-auto h-52 w-52 -translate-x-1/2 rounded-full bg-[#D7F36B]/[0.04] blur-3xl"
           ></div>
+
           @if (listmyposts()) {
             @for (post of listmyposts().posts; track $index) {
-              <article class="mb-10 mx-auto">
+              <article class="mx-auto mb-10">
+
                 <!-- Post Header -->
+
                 <div class="mb-5 flex items-start justify-between gap-3">
                   <div class="flex min-w-0 items-center gap-3">
                     <img
@@ -376,22 +486,24 @@
 
                     <div class="min-w-0">
                       <div class="flex flex-wrap items-center gap-2">
-                        <h2 class="text-sm font-bold text-white">{{ post.user.name }}</h2>
+                        <h2 class="text-sm font-bold text-white">
+                          {{ post.user.name }}
+                        </h2>
 
                         <i class="fa-solid fa-circle-check text-xs text-[#D7F36B]"></i>
                       </div>
 
                       <p class="mt-1 text-xs text-gray-500">
-                        {{ post.user.name }} . {{ post.createdAt | date:"short" }}
+                        {{ post.user.name }} . {{ post.createdAt | date: 'short' }}
                       </p>
                     </div>
                   </div>
 
                   <!-- Post Options + Privacy Toggle -->
+
                   <div class="flex shrink-0 items-center gap-2">
-                    <!-- Current Privacy -->
-                    <span class="inline-flex items-center gap-1 text-gray-300"
-                      ><svg
+                    <span class="inline-flex items-center gap-1 text-gray-300">
+                      <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15"
                         height="15"
@@ -405,26 +517,33 @@
                         aria-hidden="true"
                       >
                         <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"></path>
+
                         <path
                           d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"
                         ></path>
+
                         <path
                           d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"
                         ></path>
-                        <circle cx="12" cy="12" r="10"></circle></svg
-                      >{{ post.privacy }}</span
-                    >
-                    <!-- Post Options -->
+
+                        <circle cx="12" cy="12" r="10"></circle>
+                      </svg>
+
+                      {{ post.privacy }}
+                    </span>
                   </div>
                 </div>
 
                 <!-- Post Text -->
+
                 <div class="mb-5">
-                  <p class="text-sm leading-7 text-left text-gray-300 sm:text-base">
+                  <p class="text-left text-sm leading-7 text-gray-300 sm:text-base">
                     {{ post.body }}
                   </p>
                 </div>
+
                 <!-- Post Image -->
+
                 @if (post.image) {
                   <div class="group relative overflow-hidden rounded-2xl bg-[#191C19]">
                     <img
@@ -437,6 +556,7 @@
                 }
 
                 <!-- Post Engagement -->
+
                 <div
                   class="mt-5 flex items-center justify-between gap-3 border-b border-white/[0.07] pb-4"
                 >
@@ -458,18 +578,18 @@
                     <p class="text-xs text-gray-400">
                       <span class="font-semibold text-gray-200">
                         {{ post.likesCount }}
+
                         @if (post.likesCount > 1) {
-                          reactions
+                          {{ 'profile.reactions' | translate }}
                         } @else {
-                          reaction
+                          {{ 'profile.reaction' | translate }}
                         }
                       </span>
                     </p>
                   </div>
-                  <div class="flex flex-wrap items-center gap-2 text-xs sm:gap-3 sm:text-sm">
-                    <span
-                      class="cursor-pointer text-xs text-gray-500 inline-flex items-center gap-1"
-                    >
+
+                  <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 sm:gap-3 sm:text-sm">
+                    <span class="inline-flex cursor-pointer items-center gap-1 text-xs text-gray-500">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="13"
@@ -488,23 +608,30 @@
                         <path d="m22 15-3 3-3-3"></path>
                         <path d="M11 6h6a2 2 0 0 1 2 2v10"></path>
                       </svg>
+
                       {{ post.sharesCount }}
+
                       @if (post.sharesCount > 1) {
-                        shares
+                        {{ 'profile.shares' | translate }}
                       } @else {
-                        share
-                      }</span
-                    ><span class="cursor-pointer text-xs text-gray-500"
-                      >{{ post.commentsCount }}
+                        {{ 'profile.share' | translate }}
+                      }
+                    </span>
+
+                    <span class="cursor-pointer text-xs text-gray-500">
+                      {{ post.commentsCount }}
+
                       @if (post.commentsCount > 1) {
-                        comments
+                        {{ 'profile.comments' | translate }}
                       } @else {
-                        comment
+                        {{ 'profile.comment' | translate }}
                       }
                     </span>
                   </div>
                 </div>
+
                 <!-- Post Actions -->
+
                 <div class="grid grid-cols-3 gap-2 pt-3">
                   <button
                     type="button"
@@ -512,7 +639,7 @@
                   >
                     <i class="fa-regular fa-heart text-base"></i>
                     {{ post.likesCount }}
-                    Likes
+                    {{ 'profile.likes' | translate }}
                   </button>
 
                   <button
@@ -521,7 +648,7 @@
                   >
                     <i class="fa-regular fa-comment text-base"></i>
                     {{ post.commentsCount }}
-                    Comment
+                    {{ 'profile.comment' | translate }}
                   </button>
 
                   <button
@@ -530,9 +657,10 @@
                   >
                     <i class="fa-solid fa-share-nodes text-base"></i>
                     {{ post.sharesCount }}
-                    share
+                    {{ 'profile.share' | translate }}
                   </button>
                 </div>
+
                 <hr />
               </article>
             }
@@ -543,19 +671,25 @@
               >
                 <i class="fa-regular fa-file-lines text-3xl text-[#D7F36B]"></i>
               </div>
-              <h3 class="mt-5 text-lg font-black text-white">Your content lives here</h3>
+
+              <h3 class="mt-5 text-lg font-black text-white">
+                {{ 'profile.yourContentLivesHere' | translate }}
+              </h3>
+
               <p class="mx-auto mt-2 max-w-sm text-sm leading-7 text-gray-500">
-                Your posts and saved moments will appear here when their data is available.
+                {{ 'profile.contentEmptyDescription' | translate }}
               </p>
             </div>
           }
         </div>
-      } 
-      @else {
+      } @else {
         <!-- Saved Posts Section -->
+
         @if (activeCollection === 'saved') {
           <section class="relative mx-auto w-full max-w-4xl">
+
             <!-- Section Header -->
+
             <div class="mb-6 flex items-center justify-between gap-3">
               <div class="flex items-center gap-3">
                 <div
@@ -565,26 +699,34 @@
                 </div>
 
                 <div>
-                  <h3 class="text-lg font-black text-white sm:text-xl">Saved Posts</h3>
+                  <h3 class="text-lg font-black text-white sm:text-xl">
+                    {{ 'profile.savedPosts' | translate }}
+                  </h3>
 
-                  <p class="mt-1 text-sm text-gray-500">Your favorite moments in one place.</p>
+                  <p class="mt-1 text-sm text-gray-500">
+                    {{ 'profile.favoriteMoments' | translate }}
+                  </p>
                 </div>
               </div>
 
               <span
                 class="shrink-0 rounded-lg border border-white/[0.07] bg-[#191C19] px-3 py-2 text-xs font-bold text-[#D7F36B]"
               >
-                {{ listsavedpost().length }} Saved
+                {{ listsavedpost().length }}
+                {{ 'profile.saved' | translate }}
               </span>
             </div>
+
             <!-- Saved Posts List -->
-            @if (listsavedpost().length > 0){
+
+            @if (listsavedpost().length > 0) {
               <div class="space-y-6">
                 @for (post of listsavedpost(); track post._id) {
                   <article
                     class="overflow-hidden rounded-2xl border border-white/[0.07] bg-[#191C19] p-5 transition duration-300 hover:border-[#D7F36B]/20 sm:p-6"
                   >
                     <!-- Post Header -->
+
                     <div class="mb-5 flex items-start justify-between gap-3">
                       <div class="flex min-w-0 items-center gap-3">
                         <img
@@ -592,18 +734,23 @@
                           [alt]="post.user.name"
                           class="h-12 w-12 shrink-0 rounded-2xl object-cover ring-1 ring-white/10"
                         />
+
                         <div class="min-w-0">
                           <h4 class="truncate text-sm font-bold text-white">
                             {{ post.user.name }}
                           </h4>
+
                           <p class="mt-1 truncate text-xs text-gray-500">
                             @{{ post.user.username }}
                           </p>
+
                           <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-gray-500">
                             <span>
-                              {{ post.createdAt | date:"short"}}
+                              {{ post.createdAt | date: 'short' }}
                             </span>
+
                             <span>·</span>
+
                             <span class="inline-flex items-center gap-1">
                               <i class="fa-solid fa-earth-americas text-[10px]"></i>
                               {{ post.privacy }}
@@ -613,15 +760,17 @@
                       </div>
 
                       <!-- Saved Badge -->
+
                       <span
                         class="inline-flex shrink-0 items-center gap-2 rounded-xl border border-[#D7F36B]/15 bg-[#D7F36B]/[0.07] px-3 py-2 text-xs font-bold text-[#D7F36B]"
                       >
                         <i class="fa-solid fa-bookmark"></i>
-                        Saved
+                        {{ 'profile.saved' | translate }}
                       </span>
                     </div>
 
                     <!-- Post Text -->
+
                     @if (post.body) {
                       <div class="mb-5">
                         <p
@@ -633,16 +782,18 @@
                     }
 
                     <!-- Shared Post Notice -->
+
                     @if (post.isShare && post.sharedPost) {
                       <div
                         class="mb-4 flex items-center gap-2 rounded-xl border border-white/[0.07] bg-[#101210] p-3 text-xs text-gray-400"
                       >
                         <i class="fa-solid fa-share-nodes text-[#D7F36B]"></i>
-                        Shared post
+                        {{ 'profile.sharedPost' | translate }}
                       </div>
                     }
 
                     <!-- Post Image -->
+
                     @if (post.image) {
                       <div
                         class="group relative overflow-hidden rounded-2xl border border-white/[0.05] bg-[#101210]"
@@ -657,10 +808,12 @@
                     }
 
                     <!-- Engagement Statistics -->
+
                     <div
                       class="mt-5 flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.07] pb-4"
                     >
                       <!-- Likes -->
+
                       <div class="flex items-center gap-2">
                         <div class="flex -space-x-2">
                           <span
@@ -678,38 +831,46 @@
 
                         <span class="text-xs font-semibold text-gray-300">
                           {{ post.likesCount }}
+
                           @if (post.likesCount === 1) {
-                            reaction
+                            {{ 'profile.reaction' | translate }}
                           } @else {
-                            reactions
+                            {{ 'profile.reactions' | translate }}
                           }
                         </span>
                       </div>
 
                       <!-- Comments and Shares -->
+
                       <div class="flex flex-wrap items-center gap-4 text-xs text-gray-500">
                         <span class="inline-flex items-center gap-1.5">
                           <i class="fa-regular fa-comment"></i>
+
                           {{ post.commentsCount }}
+
                           @if (post.commentsCount === 1) {
-                            comment
+                            {{ 'profile.comment' | translate }}
                           } @else {
-                            comments
+                            {{ 'profile.comments' | translate }}
                           }
                         </span>
 
                         <span class="inline-flex items-center gap-1.5">
                           <i class="fa-solid fa-share-nodes"></i>
+
                           {{ post.sharesCount }}
+
                           @if (post.sharesCount === 1) {
-                            share
+                            {{ 'profile.share' | translate }}
                           } @else {
-                            shares
+                            {{ 'profile.shares' | translate }}
                           }
                         </span>
                       </div>
                     </div>
+
                     <!-- Top Comment -->
+
                     @if (post.topComment) {
                       <div class="mt-4 flex items-start gap-3">
                         <img
@@ -725,7 +886,7 @@
                             </span>
 
                             <span class="text-[10px] text-gray-600">
-                              {{ post.topComment.createdAt | date:"short"}}
+                              {{ post.topComment.createdAt | date: 'short' }}
                             </span>
                           </div>
 
@@ -738,9 +899,9 @@
                   </article>
                 }
               </div>
-            } 
-            @else {
+            } @else {
               <!-- Empty State -->
+
               <div
                 class="rounded-2xl border border-white/[0.07] bg-[#191C19] px-5 py-12 text-center sm:py-16"
               >
@@ -750,10 +911,12 @@
                   <i class="fa-regular fa-bookmark text-3xl text-[#D7F36B]"></i>
                 </div>
 
-                <h3 class="mt-5 text-lg font-black text-white">No saved posts yet</h3>
+                <h3 class="mt-5 text-lg font-black text-white">
+                  {{ 'profile.noSavedPosts' | translate }}
+                </h3>
 
                 <p class="mx-auto mt-2 max-w-sm text-sm leading-7 text-gray-500">
-                  Posts you save will appear here, ready for you to revisit anytime.
+                  {{ 'profile.savedPostsEmptyDescription' | translate }}
                 </p>
               </div>
             }
@@ -761,13 +924,18 @@
         }
       }
     </section>
+
     <!-- ==================== PAGE FOOTER ==================== -->
+
     <footer
       class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/[0.06] py-6 text-center sm:flex-row sm:text-left"
     >
-      <p class="text-xs text-gray-600">A little space to be yourself.</p>
+      <p class="text-xs text-gray-600">
+        {{ 'profile.footerTagline' | translate }}
+      </p>
+
       <p class="text-[10px] font-medium tracking-wide text-gray-700">
-        KINORA · MADE FOR REAL CONNECTIONS
+        KINORA · {{ 'profile.footerMadeForConnections' | translate }}
       </p>
     </footer>
   </main>

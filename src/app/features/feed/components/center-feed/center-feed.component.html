@@ -3,6 +3,7 @@
   <section class="mb-10 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#191C19]">
     <!-- Accent Top Border -->
     <div class="h-1 w-full bg-gradient-to-r from-[#D7F36B] via-[#9FE870] to-transparent"></div>
+
     <div class="p-5 sm:p-6">
       <!-- Composer Header -->
       <div class="mb-5 flex items-center gap-3">
@@ -14,30 +15,35 @@
 
         <div>
           <h2 class="text-sm font-bold text-white">
-            Hi {{ userdata().name.split(' ')[0].toUpperCase() }}
+            {{ 'feed.greeting' | translate }} {{ userdata().name.split(' ')[0].toUpperCase() }}
           </h2>
 
-          <p class="mt-1 text-xs text-gray-500">What's on your mind?</p>
+          <p class="mt-1 text-xs text-gray-500">
+            {{ 'feed.whatsOnYourMind' | translate }}
+          </p>
         </div>
       </div>
+
       <!-- Post Form -->
       <form #form (submit)="submitForm($event, form)">
         <!-- Post Text Input -->
         <textarea
           [formControl]="bodyInput"
           rows="3"
-          placeholder="Share an idea, a moment, or something inspiring..."
-          aria-label="Write a post"
+          [placeholder]="'feed.sharePlaceholder' | translate"
+          [attr.aria-label]="'feed.writePost' | translate"
           class="w-full resize rounded-xl border border-white/[0.06] bg-[#111310] p-4 text-sm leading-6 text-white outline-none transition placeholder:text-gray-600 focus:border-[#D7F36B]/40"
         ></textarea>
+
         <!-- img -->
         @if (imgToHtml()) {
           <div class="relative mt-2">
             <img
-              alt="Preview"
+              [alt]="'feed.preview' | translate"
               [src]="imgToHtml()"
               class="max-h-60 w-full rounded-lg object-cover"
             />
+
             <button
               (click)="resetphoto()"
               class="cursor-pointer absolute right-2 top-2 rounded-full bg-black/60 p-1 text-white backdrop-blur-sm"
@@ -61,6 +67,7 @@
             </button>
           </div>
         }
+
         <!-- Composer Actions -->
         <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
           <!-- Left Actions -->
@@ -70,16 +77,17 @@
               class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-gray-400 transition hover:bg-white/5 hover:text-[#D7F36B] sm:text-sm"
             >
               <i class="fa-regular fa-image text-base text-[#D7F36B]"></i>
-              <span>Photo</span>
+              <span>{{ 'feed.photo' | translate }}</span>
               <input class="hidden" type="file" (change)="getImageFile($event)" />
             </label>
+
             <!-- Feeling Button -->
             <button
               type="button"
               class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-gray-400 transition hover:bg-white/5 hover:text-[#D7F36B] sm:text-sm"
             >
               <i class="fa-regular fa-face-smile text-base text-[#D7F36B]"></i>
-              Feeling
+              {{ 'feed.feeling' | translate }}
             </button>
 
             <!-- Privacy Select -->
@@ -91,11 +99,17 @@
                   name="privacy"
                   class="w-full appearance-none rounded-xl border border-white/10 bg-[#1B1E1A] py-3 pl-4 pr-11 text-sm font-semibold text-white outline-none transition hover:border-[#D7F36B]/40 focus:border-[#D7F36B] focus:ring-2 focus:ring-[#D7F36B]/20 sm:min-w-48"
                 >
-                  <option value="public" selected class="bg-[#1B1E1A] text-white">🌎 Public</option>
+                  <option value="public" selected class="bg-[#1B1E1A] text-white">
+                    {{ 'feed.privacy.public' | translate }}
+                  </option>
 
-                  <option value="following" class="bg-[#1B1E1A] text-white">👥 Following</option>
+                  <option value="following" class="bg-[#1B1E1A] text-white">
+                    {{ 'feed.privacy.following' | translate }}
+                  </option>
 
-                  <option value="only_me" class="bg-[#1B1E1A] text-white">🔒 Only me</option>
+                  <option value="only_me" class="bg-[#1B1E1A] text-white">
+                    {{ 'feed.privacy.onlyMe' | translate }}
+                  </option>
                 </select>
 
                 <i
@@ -110,14 +124,16 @@
             type="submit"
             class="flex items-center gap-2 rounded-xl bg-[#D7F36B] px-5 py-3 text-sm font-black text-[#171914] transition hover:bg-[#c8e65e] active:scale-[0.98]"
           >
-            Publish
+            {{ 'feed.publish' | translate }}
             <i class="fa-solid fa-arrow-up text-xs"></i>
           </button>
         </div>
       </form>
     </div>
   </section>
-  <!-- ====================  Edit Post Modal ==================== -->
+
+  <!-- ==================== Edit Post Modal ==================== -->
+
   <div
     [class.hidden]="model()"
     class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-sm"
@@ -127,63 +143,82 @@
     >
       <!-- Modal Header -->
       <div class="flex shrink-0 items-center justify-between border-b border-white/10 px-5 py-4">
-        <h2 class="text-lg font-semibold text-white">Edit Post</h2>
+        <h2 class="text-lg font-semibold text-white">
+          {{ 'feed.editPost' | translate }}
+        </h2>
+
         <button
           (click)="model.set(true)"
           type="button"
-          aria-label="Close edit post modal"
+          [attr.aria-label]="'feed.closeEditModal' | translate"
           class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-gray-400 transition hover:bg-white/10 hover:text-white"
         >
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
+
       <!-- Modal Body -->
       <div class="kinora-scroll min-h-0 flex-1 space-y-5 overflow-y-auto p-5">
         <!-- Post Body -->
         <div>
           <label for="editPostBody" class="mb-2 block text-sm font-medium text-gray-300">
-            What's on your mind?
+            {{ 'feed.whatsOnYourMind' | translate }}
           </label>
+
           <textarea
             [(ngModel)]="body"
             id="editPostBody"
             rows="4"
-            placeholder="Write something..."
+            [placeholder]="'feed.writeSomething' | translate"
             class="w-full resize-y rounded-xl border border-white/10 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition focus:border-lime-400 focus:ring-1 focus:ring-lime-400"
           ></textarea>
         </div>
+
         <!-- Current Post Image -->
         <div>
-          <p class="mb-2 text-sm font-medium text-gray-300">Post Image</p>
+          <p class="mb-2 text-sm font-medium text-gray-300">
+            {{ 'feed.postImage' | translate }}
+          </p>
+
           <div class="overflow-hidden rounded-xl border border-white/10 bg-gray-800">
             <img [src]="image" alt="Post image" class="max-h-64 w-full object-contain" />
           </div>
+
           <label
             for="editPostImage"
             class="mt-3 flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-white/20 px-4 py-3 text-sm text-gray-300 transition hover:border-lime-400 hover:bg-white/5"
           >
             <i class="fa-regular fa-image text-lime-400"></i>
-            <span>Choose a new image</span>
+            <span>{{ 'feed.chooseNewImage' | translate }}</span>
           </label>
-          <input (change)="onImageSelected($event)" id="editPostImage" type="file" accept="image/*" class="hidden" />
+
+          <input
+            (change)="onImageSelected($event)"
+            id="editPostImage"
+            type="file"
+            accept="image/*"
+            class="hidden"
+          />
         </div>
+
         <!-- Privacy -->
         <div>
           <label for="editPostPrivacy" class="mb-2 block text-sm font-medium text-gray-300">
-            Post Privacy
+            {{ 'feed.postPrivacy' | translate }}
           </label>
 
           <select
-           [(ngModel)]="privacy"
+            [(ngModel)]="privacy"
             id="editPostPrivacy"
             class="w-full rounded-xl border border-white/10 bg-gray-800 px-4 py-3 text-sm text-white outline-none transition focus:border-lime-400"
           >
-            <option value="public">Public</option>
-            <option value="following">Following</option>
-            <option value="only_me">Only me</option>
+            <option value="public">{{ 'feed.privacy.public' | translate }}</option>
+            <option value="following">{{ 'feed.privacy.following' | translate }}</option>
+            <option value="only_me">{{ 'feed.privacy.onlyMe' | translate }}</option>
           </select>
         </div>
       </div>
+
       <!-- Modal Footer -->
       <div class="flex shrink-0 justify-end gap-3 border-t border-white/10 px-5 py-4">
         <button
@@ -191,20 +226,23 @@
           type="button"
           class="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-medium text-gray-300 transition hover:bg-white/5 hover:text-white"
         >
-          Cancel
+          {{ 'feed.cancel' | translate }}
         </button>
+
         <button
-        (click)="updatePost()"
+          (click)="updatePost()"
           type="button"
           class="flex items-center gap-2 rounded-xl bg-lime-300 px-5 py-2.5 text-sm font-semibold text-gray-900 transition hover:bg-lime-200"
         >
           <i class="fa-solid fa-check"></i>
-          Save Changes
+          {{ 'feed.saveChanges' | translate }}
         </button>
       </div>
     </div>
   </div>
+
   <!-- ==================== POST 1 ==================== -->
+
   @for (post of arrPost(); track post._id) {
     <article class="mb-10">
       <!-- Post Header -->
@@ -218,20 +256,24 @@
 
           <div class="min-w-0">
             <div class="flex flex-wrap items-center gap-2">
-              <h2 class="text-sm font-bold text-white">{{ post.user.name }}</h2>
+              <h2 class="text-sm font-bold text-white">
+                {{ post.user.name }}
+              </h2>
 
               <i class="fa-solid fa-circle-check text-xs text-[#D7F36B]"></i>
             </div>
 
-            <p class="mt-1 text-xs text-gray-500">{{ post.user.name }} . {{ post.createdAt | date:"short"}}</p>
+            <p class="mt-1 text-xs text-gray-500">
+              {{ post.user.name }} . {{ post.createdAt | date: 'short' }}
+            </p>
           </div>
         </div>
 
         <!-- Post Options + Privacy Toggle -->
         <div class="flex shrink-0 items-center gap-2">
           <!-- Current Privacy -->
-          <span class="inline-flex items-center gap-1 text-gray-300"
-            ><svg
+          <span class="inline-flex items-center gap-1 text-gray-300">
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="15"
               height="15"
@@ -249,17 +291,23 @@
                 d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"
               ></path>
               <path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"></path>
-              <circle cx="12" cy="12" r="10"></circle></svg
-            >{{ post.privacy }}</span
-          >
+              <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+
+            {{
+              'feed.privacy.' + (post.privacy === 'only_me' ? 'onlyMe' : post.privacy) | translate
+            }}
+          </span>
+
           <!-- Post Options -->
           <details class="relative" #postoptions>
             <summary
-              aria-label="Post options"
+              [attr.aria-label]="'feed.postOptions' | translate"
               class="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-full text-gray-500 transition hover:bg-white/[0.06] hover:text-white"
             >
               <i class="fa-solid fa-ellipsis"></i>
             </summary>
+
             <div
               class="absolute right-0 top-full z-50 mt-2 w-48 overflow-hidden rounded-xl border border-white/10 bg-gray-900 p-1.5 shadow-xl"
             >
@@ -269,7 +317,7 @@
                 class="cursor-pointer flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-gray-200 transition hover:bg-white/10"
               >
                 <i class="fa-regular fa-bookmark w-4 text-gray-400"></i>
-                <span>Save post</span>
+                <span>{{ 'feed.savePost' | translate }}</span>
               </button>
 
               @if (post.user._id == userdata()._id) {
@@ -278,14 +326,15 @@
                   class="cursor-pointer flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-gray-200 transition hover:bg-white/10"
                 >
                   <i class="fa-solid fa-pen-to-square w-4 text-gray-400"></i>
-                  <span>Edit post</span>
+                  <span>{{ 'feed.edit' | translate }}</span>
                 </button>
+
                 <button
                   (click)="deletePost(post._id); postoptions.open = false"
                   class="cursor-pointer flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-400 transition hover:bg-red-500/10"
                 >
                   <i class="fa-regular fa-trash-can w-4"></i>
-                  <span>Delete post</span>
+                  <span>{{ 'feed.delete' | translate }}</span>
                 </button>
               }
             </div>
@@ -297,6 +346,7 @@
       <div class="mb-5">
         <p class="break-words overflow-hidden">{{ post.body }}</p>
       </div>
+
       <!-- Post Image -->
       @if (post.image) {
         <div class="group relative overflow-hidden rounded-2xl bg-[#191C19]">
@@ -329,14 +379,16 @@
           <p class="text-xs text-gray-400">
             <span class="font-semibold text-gray-200">
               {{ post.likesCount }}
+
               @if (post.likesCount > 1) {
-                reactions
+                {{ 'feed.reactions' | translate }}
               } @else {
-                reaction
+                {{ 'feed.reaction' | translate }}
               }
             </span>
           </p>
         </div>
+
         <div class="flex flex-wrap items-center gap-2 text-xs sm:gap-3 sm:text-sm">
           <span class="cursor-pointer text-xs text-gray-500 inline-flex items-center gap-1">
             <svg
@@ -357,24 +409,31 @@
               <path d="m22 15-3 3-3-3"></path>
               <path d="M11 6h6a2 2 0 0 1 2 2v10"></path>
             </svg>
+
             {{ post.sharesCount }}
+
             @if (post.sharesCount > 1) {
-              shares
+              {{ 'feed.shares' | translate }}
             } @else {
-              share
-            }</span
-          ><span class="cursor-pointer text-xs text-gray-500"
-            >{{ post.commentsCount }}
+              {{ 'feed.share' | translate }}
+            }
+          </span>
+
+          <span class="cursor-pointer text-xs text-gray-500">
+            {{ post.commentsCount }}
+
             @if (post.commentsCount > 1) {
-              comments
+              {{ 'feed.comments' | translate }}
             } @else {
-              comment
-            }</span
-          ><button
-            [routerLink]="[`/moreDetails`,post._id]"
+              {{ 'feed.comment' | translate }}
+            }
+          </span>
+
+          <button
+            [routerLink]="[`/moreDetails`, post._id]"
             class="cursor-pointer text-xs text-gray-500 rounded-md px-2 py-1 text-xs font-bold text-[#1877f2] hover:bg-[#2c2d2d]"
           >
-            View details
+            {{ 'feed.viewDetails' | translate }}
           </button>
         </div>
       </div>
@@ -386,16 +445,16 @@
           class="flex items-center justify-center gap-2 rounded-xl py-3 text-xs font-semibold text-gray-400 transition hover:bg-[#D7F36B]/10 hover:text-[#D7F36B] sm:text-sm"
         >
           <i class="fa-regular fa-heart text-base"></i>
-          Likes
+          {{ 'feed.likes' | translate }}
         </button>
 
         <button
-        #commentbutton
+          #commentbutton
           type="button"
           class="flex items-center justify-center gap-2 rounded-xl py-3 text-xs font-semibold text-gray-400 transition hover:bg-white/[0.05] hover:text-white sm:text-sm"
         >
           <i class="fa-regular fa-comment text-base"></i>
-          Comment
+          {{ 'feed.commentAction' | translate }}
         </button>
 
         <button
@@ -403,18 +462,23 @@
           class="flex items-center justify-center gap-2 rounded-xl py-3 text-xs font-semibold text-gray-400 transition hover:bg-white/[0.05] hover:text-white sm:text-sm"
         >
           <i class="fa-solid fa-share-nodes text-base"></i>
-
-          share
+          {{ 'feed.shareAction' | translate }}
         </button>
       </div>
-      @defer ( on interaction(commentbutton)) {
-      <app-posts-comments [postid]="post._id" [photouser]="post.user.photo" [nameMadePost] = "post.user.name">
-        class="py-5" ></app-posts-comments
-      > 
+
+      @defer (on interaction(commentbutton)) {
+        <app-posts-comments
+          [postid]="post._id"
+          [photouser]="post.user.photo"
+          [nameMadePost]="post.user.name"
+          class="py-5"
+        ></app-posts-comments>
       }
+
       <hr />
     </article>
   }
+
   <!-- End of Feed -->
   <div class="py-10 text-center">
     <div
@@ -423,8 +487,12 @@
       <i class="fa-solid fa-check"></i>
     </div>
 
-    <p class="text-sm font-bold text-gray-300">You're all caught up.</p>
+    <p class="text-sm font-bold text-gray-300">
+      {{ 'feed.allCaughtUp' | translate }}
+    </p>
 
-    <p class="mt-2 text-xs text-gray-600">That's everything for now.</p>
+    <p class="mt-2 text-xs text-gray-600">
+      {{ 'feed.everythingForNow' | translate }}
+    </p>
   </div>
 </section>
