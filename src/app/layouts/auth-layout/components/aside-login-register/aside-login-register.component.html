@@ -34,18 +34,17 @@
       class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-xs text-white/80"
     >
       <span class="h-2 w-2 rounded-full bg-[#D7F36B]"></span>
-      A little more human.
+      {{ 'aside.tagline' | translate }}
     </div>
 
     <h1 class="text-4xl font-semibold leading-tight tracking-tight xl:text-5xl">
-      Your people.<br />
-      Your little corner<br />
-      of the internet.
+      {{ 'aside.headingLine1' | translate }}<br />
+      {{ 'aside.headingLine2' | translate }}<br />
+      {{ 'aside.headingLine3' | translate }}
     </h1>
 
     <p class="mt-5 max-w-md text-sm leading-7 text-white/65 xl:text-base">
-      A place to share your thoughts, catch up with your people, and enjoy the moments that make
-      your day.
+      {{ 'aside.description' | translate }}
     </p>
 
     <!-- Feature Cards -->
@@ -75,10 +74,12 @@
           </svg>
         </div>
 
-        <h2 class="text-sm font-semibold">Be yourself.</h2>
+        <h2 class="text-sm font-semibold">
+          {{ 'aside.feature1Title' | translate }}
+        </h2>
 
         <p class="mt-1 text-xs leading-5 text-white/55">
-          Your thoughts, your interests, your space.
+          {{ 'aside.feature1Description' | translate }}
         </p>
       </div>
 
@@ -102,9 +103,13 @@
           </svg>
         </div>
 
-        <h2 class="text-sm font-semibold">Less noise. More meaning.</h2>
+        <h2 class="text-sm font-semibold">
+          {{ 'aside.feature2Title' | translate }}
+        </h2>
 
-        <p class="mt-1 text-xs leading-5 text-white/55">Keep the moments that matter close.</p>
+        <p class="mt-1 text-xs leading-5 text-white/55">
+          {{ 'aside.feature2Description' | translate }}
+        </p>
       </div>
     </div>
   </div>
@@ -113,7 +118,7 @@
   <div
     class="relative z-10 flex items-center justify-between gap-4 border-t border-white/10 pt-5 text-xs text-white/45"
   >
-    <p>A space that feels like yours.</p>
+    <p>{{ 'aside.footer' | translate }}</p>
     <p>© KINORA</p>
   </div>
 </aside>

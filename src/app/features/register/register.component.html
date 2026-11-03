@@ -7,8 +7,68 @@
 
     <!-- Right Register Section -->
     <main
-      class="flex min-w-0 flex-col justify-center px-4 py-7 sm:px-8 sm:py-9 lg:px-8 lg:py-8 xl:px-12"
+      class=" relative flex min-w-0 flex-col justify-center px-4 py-7 sm:px-8 sm:py-9 lg:px-8 lg:py-8 xl:px-12"
     >
+      <details
+        class="absolute top-4 z-50 sm:top-8"
+        [class.right-4]="selectedLanguage === 'en'"
+        [class.sm:right-8]="selectedLanguage === 'en'"
+        [class.left-4]="selectedLanguage === 'ar'"
+        [class.sm:left-8]="selectedLanguage === 'ar'"
+      >
+        <summary
+          class="flex h-10 cursor-pointer list-none items-center gap-2 rounded-xl border border-white/10 bg-[#191C19] px-3.5 text-sm font-semibold text-gray-300 transition hover:border-[#D7F36B]/40 hover:bg-[#1C201B] hover:text-[#D7F36B]"
+        >
+          <i class="fa-solid fa-globe text-[#D7F36B]"></i>
+
+          <span>{{ selectedLanguage === 'en' ? 'EN' : 'AR' }}</span>
+
+          <i class="fa-solid fa-chevron-down text-[10px] text-gray-500"></i>
+        </summary>
+
+        <div
+          class="absolute top-full mt-2 w-40 overflow-hidden rounded-xl border border-white/10 bg-[#191C19] p-1.5 shadow-xl"
+          [class.right-0]="selectedLanguage === 'en'"
+          [class.left-0]="selectedLanguage === 'ar'"
+        >
+          <!-- English -->
+          <button
+            type="button"
+            onclick="this.closest('details').removeAttribute('open')"
+            (click)="changeLanguage('en')"
+            class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition"
+            [class.bg-[#D7F36B]/10]="selectedLanguage === 'en'"
+            [class.font-semibold]="selectedLanguage === 'en'"
+            [class.text-[#D7F36B]]="selectedLanguage === 'en'"
+            [class.text-gray-400]="selectedLanguage !== 'en'"
+          >
+            <span>English</span>
+
+            @if (selectedLanguage === 'en') {
+              <i class="fa-solid fa-check text-xs"></i>
+            }
+          </button>
+
+          <!-- Arabic -->
+          <button
+            type="button"
+            onclick="this.closest('details').removeAttribute('open')"
+            (click)="changeLanguage('ar')"
+            class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition"
+            [class.bg-[#D7F36B]/10]="selectedLanguage === 'ar'"
+            [class.font-semibold]="selectedLanguage === 'ar'"
+            [class.text-[#D7F36B]]="selectedLanguage === 'ar'"
+            [class.text-gray-400]="selectedLanguage !== 'ar'"
+          >
+            <span>العربية</span>
+
+            @if (selectedLanguage === 'ar') {
+              <i class="fa-solid fa-check text-xs"></i>
+            }
+          </button>
+        </div>
+      </details>
+
       <!-- Mobile Brand -->
       <div class="mb-7 flex items-center gap-3 lg:hidden">
         <div
@@ -27,21 +87,21 @@
             class="mb-3 inline-flex items-center gap-2 rounded-full border border-[#D7F36B]/15 bg-[#D7F36B]/[0.07] px-3 py-1.5 text-xs font-medium text-[#D7F36B]"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-[#D7F36B]"></span>
-            Your space starts here
+
+            {{ 'register.headingBadge' | translate }}
           </div>
 
           <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Join your people.
+            {{ 'register.heading' | translate }}
           </h2>
 
           <p class="mt-2 text-sm leading-6 text-white/50">
-            Create your account and make yourself at home.
+            {{ 'register.description' | translate }}
           </p>
         </div>
 
         <!-- Register Form -->
         <form [formGroup]="registerform" (ngSubmit)="onSubmit()" class="space-y-4">
-
           <!-- Full Name -->
           <div class="relative">
             <input
@@ -58,7 +118,7 @@
               for="fullName"
               class="pointer-events-none absolute start-4 top-1/2 z-10 origin-[0] -translate-y-1/2 scale-100 transform cursor-text text-sm text-white/40 duration-200 peer-focus:top-2 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-[#D7F36B] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:font-medium"
             >
-              Full name
+              {{ 'register.fullName' | translate }}
             </label>
           </div>
 
@@ -69,7 +129,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Full name is required.</span>
+
+                <span>{{ 'register.nameRequired' | translate }}</span>
               </div>
             }
           }
@@ -80,7 +141,8 @@
               role="alert"
             >
               <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-              <span>Name must be at least 3 characters.</span>
+
+              <span>{{ 'register.nameMinLength' | translate }}</span>
             </div>
           }
 
@@ -90,7 +152,8 @@
               role="alert"
             >
               <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-              <span>Name must be at max 20 characters.</span>
+
+              <span>{{ 'register.nameMaxLength' | translate }}</span>
             </div>
           }
 
@@ -110,7 +173,8 @@
               for="username"
               class="pointer-events-none absolute start-4 top-1/2 z-10 origin-[0] -translate-y-1/2 scale-100 transform cursor-text text-sm text-white/40 duration-200 peer-focus:top-2 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-[#D7F36B] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:font-medium"
             >
-              Username <span class="text-xs">(optional)</span>
+              {{ 'register.username' | translate }}
+              <span class="text-xs">({{ 'register.optional' | translate }})</span>
             </label>
           </div>
 
@@ -122,7 +186,8 @@
               role="alert"
             >
               <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-              <span>Username must be at least 3 characters.</span>
+
+              <span>{{ 'register.usernameMinLength' | translate }}</span>
             </div>
           }
 
@@ -132,7 +197,8 @@
               role="alert"
             >
               <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-              <span>Username must be at max 20 characters.</span>
+
+              <span>{{ 'register.usernameMaxLength' | translate }}</span>
             </div>
           }
 
@@ -152,7 +218,7 @@
               for="registerEmail"
               class="pointer-events-none absolute start-4 top-1/2 z-10 origin-[0] -translate-y-1/2 scale-100 transform cursor-text text-sm text-white/40 duration-200 peer-focus:top-2 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-[#D7F36B] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:font-medium"
             >
-              Email address
+              {{ 'register.email' | translate }}
             </label>
           </div>
 
@@ -163,7 +229,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Email is required.</span>
+
+                <span>{{ 'register.emailRequired' | translate }}</span>
               </div>
             }
 
@@ -173,21 +240,18 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Please enter a valid email address.</span>
+
+                <span>{{ 'register.invalidEmail' | translate }}</span>
               </div>
             }
           }
 
           <!-- Gender + Date of Birth -->
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-
             <!-- Gender -->
             <div>
-              <label
-                for="gender"
-                class="mb-2 block text-sm font-medium text-white/70"
-              >
-                Gender
+              <label for="gender" class="mb-2 block text-sm font-medium text-white/70">
+                {{ 'register.gender' | translate }}
               </label>
 
               <select
@@ -197,23 +261,27 @@
                 class="block w-full rounded-xl border border-white/10 bg-[#191C19] px-3 py-3 text-sm text-white/70 outline-none transition hover:border-white/20 focus:border-[#D7F36B]/70 focus:ring-4 focus:ring-[#D7F36B]/[0.07]"
               >
                 <option value="" selected class="bg-[#191C19] text-white/50">
-                  Select gender
+                  {{ 'register.selectGender' | translate }}
                 </option>
-                <option value="male" class="bg-[#191C19] text-white">Male</option>
-                <option value="female" class="bg-[#191C19] text-white">Female</option>
+
+                <option value="male" class="bg-[#191C19] text-white">
+                  {{ 'register.male' | translate }}
+                </option>
+
+                <option value="female" class="bg-[#191C19] text-white">
+                  {{ 'register.female' | translate }}
+                </option>
+
                 <option value="prefer-not-to-say" class="bg-[#191C19] text-white">
-                  Prefer not to say
+                  {{ 'register.preferNotToSay' | translate }}
                 </option>
               </select>
             </div>
 
             <!-- Date of Birth -->
             <div>
-              <label
-                for="dateOfBirth"
-                class="mb-2 block text-sm font-medium text-white/70"
-              >
-                Date of birth
+              <label for="dateOfBirth" class="mb-2 block text-sm font-medium text-white/70">
+                {{ 'register.dateOfBirth' | translate }}
               </label>
 
               <input
@@ -236,7 +304,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Please select your gender.</span>
+
+                <span>{{ 'register.genderRequired' | translate }}</span>
               </div>
             }
           }
@@ -250,7 +319,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Date of birth is required.</span>
+
+                <span>{{ 'register.dateOfBirthRequired' | translate }}</span>
               </div>
             }
 
@@ -260,7 +330,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Please enter age valid.</span>
+
+                <span>{{ 'register.invalidDateOfBirth' | translate }}</span>
               </div>
             }
           }
@@ -282,7 +353,7 @@
               for="registerPassword"
               class="pointer-events-none absolute start-4 top-1/2 z-10 origin-[0] -translate-y-1/2 scale-100 transform cursor-text text-sm text-white/40 duration-200 peer-focus:top-2 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-[#D7F36B] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:font-medium"
             >
-              Password
+              {{ 'register.password' | translate }}
             </label>
 
             <div
@@ -304,7 +375,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Password is required.</span>
+
+                <span>{{ 'register.passwordRequired' | translate }}</span>
               </div>
             }
           }
@@ -315,9 +387,9 @@
               role="alert"
             >
               <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
+
               <span>
-                Password must contain at least 8 characters, one uppercase letter, one lowercase
-                letter, one number, and one special character.
+                {{ 'register.passwordPattern' | translate }}
               </span>
             </div>
           }
@@ -339,7 +411,7 @@
               for="confirmPassword"
               class="pointer-events-none absolute start-4 top-1/2 z-10 origin-[0] -translate-y-1/2 scale-100 transform cursor-text text-sm text-white/40 duration-200 peer-focus:top-2 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-[#D7F36B] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:font-medium"
             >
-              Confirm password
+              {{ 'register.confirmPassword' | translate }}
             </label>
 
             <div
@@ -361,7 +433,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>RePassword is required.</span>
+
+                <span>{{ 'register.rePasswordRequired' | translate }}</span>
               </div>
             }
           }
@@ -372,7 +445,8 @@
               role="alert"
             >
               <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-              <span>Passwords do not match</span>
+
+              <span>{{ 'register.passwordMismatch' | translate }}</span>
             </div>
           }
 
@@ -381,7 +455,7 @@
             type="submit"
             class="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#D7F36B] px-5 py-3.5 text-sm font-bold text-[#101210] transition duration-200 hover:bg-[#E3FF85] focus:outline-none focus:ring-4 focus:ring-[#D7F36B]/20 active:scale-[0.99]"
           >
-            Create my account
+            {{ 'register.submit' | translate }}
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -398,26 +472,29 @@
 
         <!-- Login Link -->
         <p class="mt-6 text-center text-sm text-white/50">
-          Already have an account?
+          {{ 'register.alreadyHaveAccount' | translate }}
 
           <button
             routerLink="/login"
             class="font-semibold text-[#D7F36B] transition hover:text-[#E3FF85] hover:underline"
           >
-            Log in
+            {{ 'register.login' | translate }}
           </button>
         </p>
 
         <!-- Footer -->
         <p class="mt-5 text-center text-xs leading-5 text-white/30">
-          By joining, you agree to our
+          {{ 'register.footer.agreement' | translate }}
+
           <a class="font-medium text-white/60 transition hover:text-[#D7F36B] hover:underline">
-            Terms
+            {{ 'register.footer.terms' | translate }}
           </a>
-          and
+
+          {{ 'register.footer.and' | translate }}
+
           <a class="font-medium text-white/60 transition hover:text-[#D7F36B] hover:underline">
-            Privacy Policy
-          </a>.
+            {{ 'register.footer.privacyPolicy' | translate }}
+          </a>{{ 'register.footer.end' | translate }}
         </p>
       </div>
     </main>

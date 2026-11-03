@@ -1,0 +1,95 @@
+{
+  "login": {
+    "welcomeBack": "Welcome back",
+    "heading": "Good to see you.",
+    "description": "Pick up where you left off. Your people are waiting.",
+
+    "emailOrUsername": "Email or username",
+    "emailPlaceholder": "you@example.com",
+    "emailRequired": "Email is required.",
+    "invalidEmail": "Please enter a valid email address.",
+
+    "password": "Password",
+    "passwordRequired": "Password is required.",
+    "passwordPattern": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.",
+
+    "submit": "Log in",
+
+    "newAroundHere": "New around here?",
+    "createAccount": "Create an account",
+
+    "footer": {
+      "agreement": "By continuing, you agree to our",
+      "terms": "Terms",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "end": "."
+    }
+  },
+
+  "register": {
+    "headingBadge": "Your space starts here",
+    "heading": "Join your people.",
+    "description": "Create your account and make yourself at home.",
+
+    "fullName": "Full name",
+    "nameRequired": "Full name is required.",
+    "nameMinLength": "Name must be at least 3 characters.",
+    "nameMaxLength": "Name must be at max 20 characters.",
+
+    "username": "Username",
+    "optional": "optional",
+    "usernameMinLength": "Username must be at least 3 characters.",
+    "usernameMaxLength": "Username must be at max 20 characters.",
+
+    "email": "Email address",
+    "emailRequired": "Email is required.",
+    "invalidEmail": "Please enter a valid email address.",
+
+    "gender": "Gender",
+    "selectGender": "Select gender",
+    "male": "Male",
+    "female": "Female",
+    "preferNotToSay": "Prefer not to say",
+    "genderRequired": "Please select your gender.",
+
+    "dateOfBirth": "Date of birth",
+    "dateOfBirthRequired": "Date of birth is required.",
+    "invalidDateOfBirth": "Please enter a valid age.",
+
+    "password": "Password",
+    "passwordRequired": "Password is required.",
+    "passwordPattern": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.",
+
+    "confirmPassword": "Confirm password",
+    "rePasswordRequired": "Confirm password is required.",
+    "passwordMismatch": "Passwords do not match.",
+
+    "submit": "Create my account",
+
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Log in",
+
+    "footer": {
+      "agreement": "By joining, you agree to our",
+      "terms": "Terms",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "end": "."
+    }
+  },
+
+   "aside": {
+    "tagline": "A little more human.",
+    "headingLine1": "Your people.",
+    "headingLine2": "Your little corner",
+    "headingLine3": "of the internet.",
+    "description": "A place to share your thoughts, catch up with your people, and enjoy the moments that make your day.",
+    "feature1Title": "Be yourself.",
+    "feature1Description": "Your thoughts, your interests, your space.",
+    "feature2Title": "Less noise. More meaning.",
+    "feature2Description": "Keep the moments that matter close.",
+    "footer": "A space that feels like yours."
+  }
+
+}

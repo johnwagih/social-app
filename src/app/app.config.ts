@@ -5,6 +5,9 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { headerInterceptor } from './core/interceptors/header-interceptor';
 import { provideToastr } from 'ngx-toastr';
 import { errorInterceptor } from './core/interceptors/error-interceptor';
+import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +21,13 @@ export const appConfig: ApplicationConfig = {
     timeOut: 3000
       }
     ),
+      provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: 'i18n/',
+        suffix: '.json'
+      }),
+      fallbackLang:'en',
+      lang:'en'
+    }),
   ]
 };

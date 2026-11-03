@@ -5,13 +5,18 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validator
 import { validate } from '@angular/forms/signals';
 import { AuthService } from '../../core/auth/services/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { ServiceTranslationService } from '../../core/service-translation/service-translation.service';
+import { TranslatePipe } from '@ngx-translate/core';
+import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-register',
-  imports: [ RouterLink, AsideLoginRegisterComponent , ReactiveFormsModule ],
+  imports: [  RouterLink, TranslatePipe , AsideLoginRegisterComponent , ReactiveFormsModule ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+    private readonly mytranslate = inject(ServiceTranslationService)
+
   private readonly toster = inject(ToastrService)
   today = new Date() ;
   year = this.today.getFullYear()
@@ -85,4 +90,11 @@ ckeckRepassword(control:AbstractControl){
 
   }
   
+
+    //changeLanguage
+  selectedLanguage = localStorage.getItem('lang') || 'en';
+  changeLanguage(lang: string) {
+    this.mytranslate.changeLang(lang);
+      this.selectedLanguage = lang;
+  }
 }

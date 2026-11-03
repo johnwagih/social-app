@@ -1,0 +1,94 @@
+{
+  "login": {
+    "welcomeBack": "مرحبًا بعودتك",
+    "heading": "سعداء برؤيتك مجددًا.",
+    "description": "تابع من حيث توقفت، أصدقاؤك في انتظارك.",
+
+    "emailOrUsername": "البريد الإلكتروني أو اسم المستخدم",
+    "emailPlaceholder": "you@example.com",
+    "emailRequired": "البريد الإلكتروني مطلوب.",
+    "invalidEmail": "من فضلك أدخل بريدًا إلكترونيًا صحيحًا.",
+
+    "password": "كلمة المرور",
+    "passwordRequired": "كلمة المرور مطلوبة.",
+    "passwordPattern": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل، وتحتوي على حرف كبير وحرف صغير ورقم ورمز خاص.",
+
+    "submit": "تسجيل الدخول",
+
+    "newAroundHere": "هل أنت جديد هنا؟",
+    "createAccount": "إنشاء حساب",
+
+    "footer": {
+      "agreement": "بمتابعتك، فإنك توافق على",
+      "terms": "الشروط والأحكام",
+      "and": "و",
+      "privacyPolicy": "سياسة الخصوصية",
+      "end": "."
+    }
+  },
+
+  "register": {
+    "headingBadge": "مساحتك تبدأ من هنا",
+    "heading": "انضم إلى مجتمعك.",
+    "description": "أنشئ حسابك واجعل هذه المساحة مكانك الخاص.",
+
+    "fullName": "الاسم بالكامل",
+    "nameRequired": "الاسم بالكامل مطلوب.",
+    "nameMinLength": "يجب ألا يقل الاسم عن 3 أحرف.",
+    "nameMaxLength": "يجب ألا يزيد الاسم عن 20 حرفًا.",
+
+    "username": "اسم المستخدم",
+    "optional": "اختياري",
+    "usernameMinLength": "يجب ألا يقل اسم المستخدم عن 3 أحرف.",
+    "usernameMaxLength": "يجب ألا يزيد اسم المستخدم عن 20 حرفًا.",
+
+    "email": "البريد الإلكتروني",
+    "emailRequired": "البريد الإلكتروني مطلوب.",
+    "invalidEmail": "من فضلك أدخل بريدًا إلكترونيًا صحيحًا.",
+
+    "gender": "النوع",
+    "selectGender": "اختر النوع",
+    "male": "ذكر",
+    "female": "أنثى",
+    "preferNotToSay": "أفضل عدم الإفصاح",
+    "genderRequired": "من فضلك اختر النوع.",
+
+    "dateOfBirth": "تاريخ الميلاد",
+    "dateOfBirthRequired": "تاريخ الميلاد مطلوب.",
+    "invalidDateOfBirth": "من فضلك أدخل عمرًا صحيحًا.",
+
+    "password": "كلمة المرور",
+    "passwordRequired": "كلمة المرور مطلوبة.",
+    "passwordPattern": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل، وتحتوي على حرف كبير وحرف صغير ورقم ورمز خاص.",
+
+    "confirmPassword": "تأكيد كلمة المرور",
+    "rePasswordRequired": "تأكيد كلمة المرور مطلوب.",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+
+    "submit": "إنشاء حسابي",
+
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "login": "تسجيل الدخول",
+
+    "footer": {
+      "agreement": "بانضمامك، فإنك توافق على",
+      "terms": "الشروط والأحكام",
+      "and": "و",
+      "privacyPolicy": "سياسة الخصوصية",
+      "end": "."
+    }
+  },
+
+    "aside": {
+    "tagline": "مساحة أكثر إنسانية.",
+    "headingLine1": "أصدقاؤك.",
+    "headingLine2": "مساحتك الصغيرة",
+    "headingLine3": "على الإنترنت.",
+    "description": "مكان تشارك فيه أفكارك، وتتواصل مع أصدقائك، وتستمتع باللحظات التي تجعل يومك مميزًا.",
+    "feature1Title": "كن على طبيعتك.",
+    "feature1Description": "أفكارك، اهتماماتك، ومساحتك الخاصة.",
+    "feature2Title": "ضوضاء أقل، معنى أكبر.",
+    "feature2Description": "احتفظ باللحظات المهمة بالقرب منك.",
+    "footer": "مساحة تشعر أنها ملكك."
+  }
+}

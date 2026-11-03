@@ -7,8 +7,69 @@
 
     <!-- Right Login Section -->
     <main
-      class="flex min-w-0 flex-col justify-center px-4 py-7 sm:px-8 sm:py-9 lg:px-8 lg:py-8 xl:px-12"
+      class="relative flex min-w-0 flex-col justify-center px-4 py-7 sm:px-8 sm:py-9 lg:px-8 lg:py-8 xl:px-12"
     >
+      <!-- Language Switcher -->
+      <details
+        class="absolute top-4 z-50 sm:top-8"
+        [class.right-4]="selectedLanguage === 'en'"
+        [class.sm:right-8]="selectedLanguage === 'en'"
+        [class.left-4]="selectedLanguage === 'ar'"
+        [class.sm:left-8]="selectedLanguage === 'ar'"
+      >
+        <summary
+          class="flex h-10 cursor-pointer list-none items-center gap-2 rounded-xl border border-white/10 bg-[#191C19] px-3.5 text-sm font-semibold text-gray-300 transition hover:border-[#D7F36B]/40 hover:bg-[#1C201B] hover:text-[#D7F36B]"
+        >
+          <i class="fa-solid fa-globe text-[#D7F36B]"></i>
+
+          <span>{{ selectedLanguage === 'en' ? 'EN' : 'AR' }}</span>
+
+          <i class="fa-solid fa-chevron-down text-[10px] text-gray-500"></i>
+        </summary>
+
+        <div
+          class="absolute top-full mt-2 w-40 overflow-hidden rounded-xl border border-white/10 bg-[#191C19] p-1.5 shadow-xl"
+          [class.right-0]="selectedLanguage === 'en'"
+          [class.left-0]="selectedLanguage === 'ar'"
+        >
+          <!-- English -->
+          <button
+            type="button"
+            onclick="this.closest('details').removeAttribute('open')"
+            (click)="changeLanguage('en')"
+            class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition"
+            [class.bg-[#D7F36B]/10]="selectedLanguage === 'en'"
+            [class.font-semibold]="selectedLanguage === 'en'"
+            [class.text-[#D7F36B]]="selectedLanguage === 'en'"
+            [class.text-gray-400]="selectedLanguage !== 'en'"
+          >
+            <span>English</span>
+
+            @if (selectedLanguage === 'en') {
+              <i class="fa-solid fa-check text-xs"></i>
+            }
+          </button>
+
+          <!-- Arabic -->
+          <button
+            type="button"
+            onclick="this.closest('details').removeAttribute('open')"
+            (click)="changeLanguage('ar')"
+            class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition"
+            [class.bg-[#D7F36B]/10]="selectedLanguage === 'ar'"
+            [class.font-semibold]="selectedLanguage === 'ar'"
+            [class.text-[#D7F36B]]="selectedLanguage === 'ar'"
+            [class.text-gray-400]="selectedLanguage !== 'ar'"
+          >
+            <span>العربية</span>
+
+            @if (selectedLanguage === 'ar') {
+              <i class="fa-solid fa-check text-xs"></i>
+            }
+          </button>
+        </div>
+      </details>
+
       <!-- Mobile Brand -->
       <div class="mb-7 flex items-center gap-3 lg:hidden">
         <div
@@ -27,13 +88,16 @@
             class="mb-3 inline-flex items-center gap-2 rounded-full border border-[#D7F36B]/15 bg-[#D7F36B]/[0.07] px-3 py-1.5 text-xs font-medium text-[#D7F36B]"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-[#D7F36B]"></span>
-            Welcome back
+
+            {{ 'login.welcomeBack' | translate }}
           </div>
 
-          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Good to see you.</h2>
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            {{ 'login.heading' | translate }}
+          </h2>
 
           <p class="mt-2 text-sm leading-6 text-white/50">
-            Pick up where you left off. Your people are waiting.
+            {{ 'login.description' | translate }}
           </p>
         </div>
 
@@ -42,7 +106,7 @@
           <!-- Email -->
           <div>
             <label for="loginEmail" class="mb-2 block text-sm font-medium text-white/70">
-              Email or username
+              {{ 'login.emailOrUsername' | translate }}
             </label>
 
             <div class="relative">
@@ -67,7 +131,7 @@
                 type="text"
                 id="loginEmail"
                 name="email"
-                placeholder="you@example.com"
+                [placeholder]="'login.emailPlaceholder' | translate"
                 autocomplete="username"
                 class="w-full rounded-xl border border-white/10 bg-[#191C19] py-3.5 pl-12 pr-4 text-sm text-white outline-none transition-all duration-200 placeholder:text-white/25 hover:border-white/20 focus:border-[#D7F36B]/70 focus:bg-[#1C201B] focus:ring-4 focus:ring-[#D7F36B]/[0.07]"
               />
@@ -81,7 +145,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Email is required.</span>
+
+                <span>{{ 'login.emailRequired' | translate }}</span>
               </div>
             }
 
@@ -91,7 +156,8 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                <span>Please enter a valid email address.</span>
+
+                <span>{{ 'login.invalidEmail' | translate }}</span>
               </div>
             }
           }
@@ -100,7 +166,7 @@
           <div>
             <div class="mb-2 flex items-center justify-between gap-3">
               <label for="loginPassword" class="block text-sm font-medium text-white/70">
-                Password
+                {{ 'login.password' | translate }}
               </label>
 
               <!-- Forgot Password -->
@@ -130,7 +196,7 @@
                 for="loginPassword"
                 class="pointer-events-none absolute start-4 top-1/2 z-10 origin-[0] -translate-y-1/2 scale-100 transform cursor-text text-sm text-white/35 duration-200 peer-focus:top-2 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-[#D7F36B] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:font-medium"
               >
-                Password
+                {{ 'login.password' | translate }}
               </label>
 
               <div
@@ -152,7 +218,8 @@
                   role="alert"
                 >
                   <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
-                  <span>Password is required.</span>
+
+                  <span>{{ 'login.passwordRequired' | translate }}</span>
                 </div>
               }
             }
@@ -163,9 +230,9 @@
                 role="alert"
               >
                 <i class="fa-solid fa-circle-xmark mt-0.5 text-red-400"></i>
+
                 <span>
-                  Password must contain at least 8 characters, one uppercase letter, one lowercase
-                  letter, one number, and one special character.
+                  {{ 'login.passwordPattern' | translate }}
                 </span>
               </div>
             }
@@ -188,7 +255,7 @@
             type="submit"
             class="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#D7F36B] px-5 py-3.5 text-sm font-bold text-[#101210] transition duration-200 hover:bg-[#E3FF85] focus:outline-none focus:ring-4 focus:ring-[#D7F36B]/20 active:scale-[0.99]"
           >
-            Log in
+            {{ 'login.submit' | translate }}
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -207,7 +274,9 @@
         <div class="my-6 flex items-center gap-4">
           <div class="h-px flex-1 bg-white/[0.08]"></div>
 
-          <span class="text-xs text-white/35">New around here?</span>
+          <span class="text-xs text-white/35">
+            {{ 'login.newAroundHere' | translate }}
+          </span>
 
           <div class="h-px flex-1 bg-white/[0.08]"></div>
         </div>
@@ -217,19 +286,22 @@
           routerLink="/register"
           class="flex w-full items-center justify-center rounded-xl border border-white/10 bg-white/[0.02] px-5 py-3.5 text-sm font-semibold text-white/80 transition duration-200 hover:border-[#D7F36B]/40 hover:bg-[#D7F36B]/[0.05] hover:text-[#D7F36B]"
         >
-          Create an account
+          {{ 'login.createAccount' | translate }}
         </a>
 
         <!-- Footer -->
         <p class="mt-6 text-center text-xs leading-5 text-white/30">
-          By continuing, you agree to our
+          {{ 'login.footer.agreement' | translate }}
+
           <a class="font-medium text-white/60 transition hover:text-[#D7F36B] hover:underline">
-            Terms
+            {{ 'login.footer.terms' | translate }}
           </a>
-          and
+
+          {{ 'login.footer.and' | translate }}
+
           <a class="font-medium text-white/60 transition hover:text-[#D7F36B] hover:underline">
-            Privacy Policy </a
-          >.
+            {{ 'login.footer.privacyPolicy' | translate }} </a
+          >{{ 'login.footer.end' | translate }}
         </p>
       </div>
     </main>
