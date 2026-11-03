@@ -28,8 +28,7 @@ export class NavComponent implements OnInit {
   this.toster.success('Logged out successfully', 'Success');
   this.router.navigate(['/login']);
 }
-selectedLanguage = 'en';
-
+selectedLanguage = localStorage.getItem('lang') || 'en';
 changeLanguage(lang: string) {
   this.mytranslate.changeLang(lang);
   this.selectedLanguage = lang;
